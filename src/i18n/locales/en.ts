@@ -129,6 +129,9 @@ export default {
     "yourEmail": "Email Address",
     "message": "Your Message",
     "send": "Send Message",
+    "sending": "Sending...",
+    "sendFailed": "Failed to send. Please try again.",
+    "networkError": "Network error. Please try again.",
     "sent": "Message Sent",
     "sentDesc": "Thank you for reaching out. Our team will respond within 24 hours."
   },
@@ -165,7 +168,9 @@ export default {
     "clear": "Clear Cart"
   },
   "language": {
+    "label": "Language",
     "en": "English",
-    "ar": "العربية"
+    "ar": "العربية",
+    "zh": "中文"
   }
 }

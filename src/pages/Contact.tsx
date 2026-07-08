@@ -50,10 +50,10 @@ export default function Contact() {
         setSubmitted(true);
         form.reset();
       } else {
-        alert('Failed to send. Please try again.');
+        alert(t('contact.sendFailed'));
       }
     } catch {
-      alert('Network error. Please try again.');
+      alert(t('contact.networkError'));
     } finally {
       setLoading(false);
     }

@@ -118,7 +118,9 @@ export default function Navbar() {
                 }`}
               >
                 <Globe size={18} />
-                <span className="text-xs font-medium">{i18n.language === 'ar' ? 'العربية' : 'EN'}</span>
+                <span className="text-xs font-medium">
+                  {i18n.language === 'ar' ? 'العربية' : i18n.language === 'zh' ? '中文' : 'EN'}
+                </span>
               </button>
               {langOpen && (
                 <div className="absolute right-0 top-full mt-2 bg-cream rounded-xl shadow-lg py-2 min-w-[140px] z-50 border border-cream-dark">
@@ -137,6 +139,14 @@ export default function Navbar() {
                     }`}
                   >
                     العربية
+                  </button>
+                  <button
+                    onClick={() => changeLanguage('zh')}
+                    className={`w-full px-4 py-2 text-start text-sm font-medium transition-colors ${
+                      i18n.language === 'zh' ? 'text-gold bg-gold/10' : 'text-emerald-deep hover:bg-cream-dark'
+                    }`}
+                  >
+                    中文
                   </button>
                 </div>
               )}
@@ -188,13 +198,36 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="mt-6 pt-6 border-t border-cream-dark">
-                <button
-                  onClick={() => changeLanguage(i18n.language === 'ar' ? 'en' : 'ar')}
-                  className="flex items-center gap-2 w-full py-3 px-4 text-stone hover:text-gold transition-colors"
-                >
-                  <Globe size={18} />
-                  <span>{i18n.language === 'ar' ? 'English' : 'العربية'}</span>
-                </button>
+                <div className="px-4 py-2 text-xs uppercase tracking-wider text-stone">{t('language.label')}</div>
+                <div className="space-y-1">
+                  <button
+                    onClick={() => changeLanguage('en')}
+                    className={`flex items-center gap-2 w-full py-2 px-4 text-sm transition-colors ${
+                      i18n.language === 'en' ? 'text-gold font-medium' : 'text-stone hover:text-gold'
+                    }`}
+                  >
+                    <Globe size={16} />
+                    <span>English</span>
+                  </button>
+                  <button
+                    onClick={() => changeLanguage('ar')}
+                    className={`flex items-center gap-2 w-full py-2 px-4 text-sm transition-colors ${
+                      i18n.language === 'ar' ? 'text-gold font-medium' : 'text-stone hover:text-gold'
+                    }`}
+                  >
+                    <Globe size={16} />
+                    <span>العربية</span>
+                  </button>
+                  <button
+                    onClick={() => changeLanguage('zh')}
+                    className={`flex items-center gap-2 w-full py-2 px-4 text-sm transition-colors ${
+                      i18n.language === 'zh' ? 'text-gold font-medium' : 'text-stone hover:text-gold'
+                    }`}
+                  >
+                    <Globe size={16} />
+                    <span>中文</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
