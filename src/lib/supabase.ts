@@ -27,8 +27,8 @@ import { createClient } from '@supabase/supabase-js';
 // 管理员查看需要登录，暂时先用 service_role key 在管理页面验证（不推荐）
 // 更好的方式：创建 admin_users 表 + 登录逻辑
 
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_URL = 'https://xvmbgacopbpmaftewmbk.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2bWJnYWNvcGJtcGFmdGV3bWJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MTg0ODgsImV4cCI6MjA5ODk5NDQ4OH0.VKMeyOtiZnokM5jU4d7FZvHaArZo6_S4onrmr7wOZkk';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
