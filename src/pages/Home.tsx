@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Star, Quote, Play } from 'lucide-react';
+import { ArrowRight, Star, Quote, Leaf, Droplets, Moon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ScrollReveal from '../components/ScrollReveal';
 import ProductCard from '../components/ProductCard';
@@ -8,7 +8,7 @@ import { products, reviews, categories } from '../data/products';
 
 export default function Home() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language as 'zh' | 'en';
+  const lang = i18n.language as 'en' | 'ar';
   const featuredProducts = products.slice(0, 4);
   const newProducts = products.slice(4, 8);
   const displayCategories = categories.slice(1, 5);
@@ -18,20 +18,33 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1519681393798-ef1a04f6e42e?w=1920&h=1080&fit=crop"
+            src="https://neeko-copilot.bytedance.net/api/text2image?prompt=luxury%20wellness%20tea%20golden%20saffron%20moroccan%20style%20interior%20warm%20lighting%20green%20gold%20aesthetic&image_size=landscape_16_9"
             alt="Hero"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/60" />
-          <div className="absolute top-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/20 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-deep/85 via-emerald-deep/70 to-emerald-deep/80" />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gold/8 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-emerald-light/10 rounded-full blur-3xl" />
         </div>
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <motion.p
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-accent tracking-[0.3em] text-sm uppercase font-medium mb-6"
+            className="flex items-center justify-center gap-3 mb-6"
+          >
+            <span className="px-4 py-1.5 bg-gold/20 text-gold text-sm rounded-full font-medium border border-gold/30">
+              {t('home.halalBadge')}
+            </span>
+            <span className="px-4 py-1.5 bg-cream/10 text-cream text-sm rounded-full font-medium border border-cream/20">
+              {t('home.caffeineFreeBadge')}
+            </span>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-gold tracking-[0.3em] text-sm uppercase font-medium mb-6"
           >
             {t('home.heroSubtitle')}
           </motion.p>
@@ -39,7 +52,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight"
+            className="font-serif text-4xl md:text-5xl lg:text-6xl text-cream mb-6 leading-tight"
           >
             {t('home.heroTitle')}
           </motion.h1>
@@ -47,7 +60,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="text-cream/80 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
           >
             {t('home.heroDesc')}
           </motion.p>
@@ -59,15 +72,17 @@ export default function Home() {
           >
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 bg-accent text-white px-10 py-4 rounded-xl hover:bg-accent-light transition-all duration-300 font-medium shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 bg-gold text-emerald-deep px-8 py-3.5 rounded-lg hover:bg-gold-light transition-all duration-300 font-medium"
             >
               <span>{t('home.explore')}</span>
               <ArrowRight size={18} />
             </Link>
-            <button className="inline-flex items-center gap-2 border-2 border-white/30 text-white px-10 py-4 rounded-xl hover:bg-white/10 hover:border-white/50 transition-all duration-300 font-medium backdrop-blur-sm">
-              <Play size={18} className="fill-white" />
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 border-2 border-cream/30 text-cream px-8 py-3.5 rounded-lg hover:bg-cream/10 hover:border-cream/50 transition-all duration-300 font-medium backdrop-blur-sm"
+            >
               <span>{t('home.learnMore')}</span>
-            </button>
+            </Link>
           </motion.div>
         </div>
         <motion.div
@@ -76,39 +91,67 @@ export default function Home() {
           transition={{ delay: 1.2 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <div className="flex flex-col items-center gap-2 text-white/60">
+          <div className="flex flex-col items-center gap-2 text-cream/60">
             <span className="text-xs tracking-widest uppercase">{t('home.explore')}</span>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center pt-2"
+              className="w-6 h-10 border-2 border-cream/40 rounded-full flex justify-center pt-2"
             >
-              <div className="w-1 h-2 bg-white/60 rounded-full" />
+              <div className="w-1 h-2 bg-cream/60 rounded-full" />
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      <section className="py-24 px-6 bg-background-secondary">
+      <section className="py-16 px-6 bg-emerald-deep">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { icon: Leaf, title: t('home.halalBadge'), desc: t('home.halalDesc') },
+              { icon: Droplets, title: t('home.caffeineFreeBadge'), desc: t('home.caffeineFreeDesc') },
+              { icon: Moon, title: t('home.organicBadge'), desc: t('home.organicDesc') },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                className="flex items-center gap-4"
+              >
+                <div className="w-14 h-14 bg-gold/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <item.icon size={24} className="text-gold" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-lg text-cream">{item.title}</h3>
+                  <p className="text-cream/60 text-sm">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <h2 className="font-serif text-3xl md:text-4xl text-center text-primary mb-4">{t('home.categories')}</h2>
-            <p className="text-text-secondary text-center mb-16 max-w-xl mx-auto">{t('home.categoriesDesc')}</p>
+            <h2 className="font-serif text-2xl md:text-3xl text-center text-emerald-deep mb-3">{t('home.categories')}</h2>
+            <p className="text-stone text-center mb-14 max-w-xl mx-auto">{t('home.categoriesDesc')}</p>
           </ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {displayCategories.map((cat, i) => (
               <ScrollReveal key={cat.en} delay={i * 0.1}>
                 <Link
                   to={`/products?category=${cat.en}`}
-                  className="group block relative overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100 hover:bg-gray-200 transition-all duration-500 hover:-translate-y-1"
+                  className="group block relative overflow-hidden rounded-xl aspect-[4/5] bg-cream-dark hover:bg-emerald-deep transition-all duration-500"
                 >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+                    <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-500">
+                      <Leaf size={20} className="text-gold" />
+                    </div>
+                    <span className="font-serif text-base text-emerald-deep group-hover:text-cream transition-colors text-center">{cat[lang]}</span>
                   </div>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-                    <span className="font-serif text-xl text-primary group-hover:text-accent transition-colors">{cat[lang]}</span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </ScrollReveal>
             ))}
@@ -116,21 +159,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-6">
+      <section className="py-20 px-6 bg-cream-dark/30">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
               <div>
-                <h2 className="font-serif text-3xl md:text-4xl text-primary mb-2">{t('home.featured')}</h2>
-                <p className="text-text-secondary">{t('home.featuredDesc')}</p>
+                <h2 className="font-serif text-2xl md:text-3xl text-emerald-deep mb-2">{t('home.featured')}</h2>
+                <p className="text-stone">{t('home.featuredDesc')}</p>
               </div>
-              <Link to="/products" className="inline-flex items-center gap-2 text-accent hover:text-primary transition-colors font-medium group">
+              <Link to="/products" className="inline-flex items-center gap-2 text-gold hover:text-emerald-deep transition-colors font-medium group">
                 <span>{t('home.viewAll')}</span>
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
@@ -138,21 +181,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-background-secondary">
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
               <div>
-                <h2 className="font-serif text-3xl md:text-4xl text-primary mb-2">{t('home.newArrivals')}</h2>
-                <p className="text-text-secondary">{t('home.newArrivalsDesc')}</p>
+                <h2 className="font-serif text-2xl md:text-3xl text-emerald-deep mb-2">{t('home.newArrivals')}</h2>
+                <p className="text-stone">{t('home.newArrivalsDesc')}</p>
               </div>
-              <Link to="/products" className="inline-flex items-center gap-2 text-accent hover:text-primary transition-colors font-medium group">
+              <Link to="/products" className="inline-flex items-center gap-2 text-gold hover:text-emerald-deep transition-colors font-medium group">
                 <span>{t('home.viewAll')}</span>
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {newProducts.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
@@ -160,34 +203,34 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-6">
+      <section className="py-20 px-6 bg-cream-dark/30">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal>
               <div className="relative">
-                <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
                   <img
-                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=600&fit=crop"
+                    src="https://neeko-copilot.bytedance.net/api/text2image?prompt=artisan%20tea%20blending%20middle%20eastern%20spices%20saffron%20cinnamon%20warm%20golden%20light%20craftsmanship&image_size=landscape_4_3"
                     alt="Brand"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-accent/10 rounded-3xl -z-10" />
-                <div className="absolute -top-8 -left-8 w-32 h-32 bg-primary/5 rounded-3xl -z-10" />
+                <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-gold/10 rounded-xl -z-10" />
+                <div className="absolute -top-6 -left-6 w-24 h-24 bg-emerald-deep/5 rounded-xl -z-10" />
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <p className="text-accent tracking-widest text-sm uppercase font-medium mb-4">{t('home.brandStory')}</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-primary mb-6 leading-tight">{t('home.brandTitle')}</h2>
-              <p className="text-text-secondary leading-relaxed mb-6">
+              <p className="text-gold tracking-widest text-sm uppercase font-medium mb-4">{t('home.brandStory')}</p>
+              <h2 className="font-serif text-2xl md:text-3xl text-emerald-deep mb-5 leading-tight">{t('home.brandTitle')}</h2>
+              <p className="text-stone leading-relaxed mb-5">
                 {t('home.brandDesc1')}
               </p>
-              <p className="text-text-secondary leading-relaxed mb-8">
+              <p className="text-stone leading-relaxed mb-7">
                 {t('home.brandDesc2')}
               </p>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 text-accent hover:text-primary transition-colors font-medium group"
+                className="inline-flex items-center gap-2 text-gold hover:text-emerald-deep transition-colors font-medium group"
               >
                 <span>{t('home.learnMore')}</span>
                 <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
@@ -197,34 +240,34 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-background-secondary">
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <h2 className="font-serif text-3xl md:text-4xl text-center text-primary mb-4">{t('home.reviews')}</h2>
-            <p className="text-text-secondary text-center mb-16 max-w-xl mx-auto">{t('home.reviewsDesc')}</p>
+            <h2 className="font-serif text-2xl md:text-3xl text-center text-emerald-deep mb-3">{t('home.reviews')}</h2>
+            <p className="text-stone text-center mb-14 max-w-xl mx-auto">{t('home.reviewsDesc')}</p>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {reviews.map((review, i) => (
               <ScrollReveal key={review.id} delay={i * 0.1}>
-                <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-shadow duration-500">
-                  <div className="flex items-center gap-1 mb-4">
+                <div className="bg-cream rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow duration-500">
+                  <div className="flex items-center gap-1 mb-3">
                     {Array.from({ length: 5 }).map((_, j) => (
                       <Star
                         key={j}
-                        size={14}
-                        className={j < review.rating ? 'fill-accent text-accent' : 'text-gray-200'}
+                        size={12}
+                        className={j < review.rating ? 'fill-gold text-gold' : 'text-cream-dark'}
                       />
                     ))}
                   </div>
-                  <Quote size={20} className="text-accent/30 mb-3" />
-                  <p className="text-text-primary text-sm leading-relaxed mb-6">{review.comment[lang]}</p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
-                      <span className="font-serif text-accent text-sm">{review.name[lang][0]}</span>
+                  <Quote size={16} className="text-gold/30 mb-2" />
+                  <p className="text-emerald-deep text-sm leading-relaxed mb-5">{review.comment[lang]}</p>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gold/10 rounded-full flex items-center justify-center">
+                      <span className="font-serif text-gold text-xs">{review.name[lang][0]}</span>
                     </div>
                     <div>
-                      <p className="text-text-primary text-sm font-medium">{review.name[lang]}</p>
-                      <p className="text-text-muted text-xs">{review.date}</p>
+                      <p className="text-emerald-deep text-xs font-medium">{review.name[lang]}</p>
+                      <p className="text-stone text-xs">{review.date}</p>
                     </div>
                   </div>
                 </div>
@@ -234,16 +277,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 px-6 bg-primary">
+      <section className="py-20 px-6 bg-emerald-deep">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">{t('home.heroTitle')}</h2>
-            <p className="text-white/80 text-lg mb-10 max-w-xl mx-auto">{t('home.heroDesc')}</p>
+            <h2 className="font-serif text-2xl md:text-3xl text-cream mb-5">{t('home.heroTitle')}</h2>
+            <p className="text-cream/70 text-base mb-8 max-w-xl mx-auto">{t('home.heroDesc')}</p>
             <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-white text-primary px-10 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 font-medium shadow-lg hover:shadow-xl"
+              to="/products"
+              className="inline-flex items-center gap-2 bg-gold text-emerald-deep px-8 py-3.5 rounded-lg hover:bg-gold-light transition-all duration-300 font-medium"
             >
-              <span>{t('home.learnMore')}</span>
+              <span>{t('home.explore')}</span>
               <ArrowRight size={18} />
             </Link>
           </ScrollReveal>

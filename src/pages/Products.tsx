@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SlidersHorizontal } from 'lucide-react';
+import { SlidersHorizontal, Leaf, Flame, Heart, Gift } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ScrollReveal from '../components/ScrollReveal';
 import ProductCard from '../components/ProductCard';
@@ -8,7 +8,7 @@ import { products, categories } from '../data/products';
 
 export default function Products() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language as 'zh' | 'en';
+  const lang = i18n.language as 'en' | 'ar';
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.get('category') || 'all';
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
@@ -21,9 +21,9 @@ export default function Products() {
   }, [searchParams]);
 
   const filteredProducts = useMemo(() => {
-    let result = selectedCategory === 'all' || selectedCategory === '全部' || selectedCategory === 'All'
+    let result = selectedCategory === 'all' || selectedCategory === 'الكل'
       ? products
-      : products.filter((p) => p.category.zh === selectedCategory || p.category.en === selectedCategory);
+      : products.filter((p) => p.category.en === selectedCategory || p.category.ar === selectedCategory);
 
     switch (sortBy) {
       case 'price-asc':
@@ -39,7 +39,7 @@ export default function Products() {
     return result;
   }, [selectedCategory, sortBy]);
 
-  const handleCategoryChange = (cat: { zh: string; en: string }) => {
+  const handleCategoryChange = (cat: { en: string; ar: string }) => {
     const catKey = cat.en === 'All' ? 'all' : cat.en;
     setSelectedCategory(catKey);
     if (catKey === 'all') {
@@ -50,16 +50,31 @@ export default function Products() {
     setSearchParams(searchParams);
   };
 
-  const isCategorySelected = (cat: { zh: string; en: string }) => {
+  const isCategorySelected = (cat: { en: string; ar: string }) => {
     const catKey = cat.en === 'All' ? 'all' : cat.en;
-    return selectedCategory === catKey || selectedCategory === cat.zh || selectedCategory === cat.en;
+    return selectedCategory === catKey || selectedCategory === cat.ar;
+  };
+
+  const categoryIcons: Record<string, React.ReactNode> = {
+    'All': <Leaf size={14} />,
+    'الكل': <Leaf size={14} />,
+    'Middle Eastern Classics': <Flame size={14} />,
+    'كلاسيكيات الشرق الأوسط': <Flame size={14} />,
+    'Oriental Herbs': <Leaf size={14} />,
+    'أعشاب الشرق الأقصى': <Leaf size={14} />,
+    'Functional Blends': <Heart size={14} />,
+    'المزيجات الوظيفية': <Heart size={14} />,
+    'Premium Gift': <Gift size={14} />,
+    'هدايا فاخرة': <Gift size={14} />,
+    'Ramadan Collection': <Gift size={14} />,
+    'مجموعة رمضان': <Gift size={14} />,
   };
 
   return (
-    <div className="pt-24 pb-16 px-6 min-h-screen">
+    <div className="pt-24 pb-16 px-6 min-h-screen bg-cream">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
-          <h1 className="font-serif text-4xl text-charcoal mb-2">{t('products.title')}</h1>
+          <h1 className="font-serif text-4xl text-emerald-deep mb-2">{t('products.title')}</h1>
           <p className="text-stone mb-8">{t('products.count', { count: filteredProducts.length })}</p>
         </ScrollReveal>
 
@@ -70,12 +85,13 @@ export default function Products() {
                 <button
                   key={cat.en}
                   onClick={() => handleCategoryChange(cat)}
-                  className={`px-4 py-2 rounded text-sm transition-colors ${
+                  className={`px-4 py-2 rounded-lg text-sm transition-colors flex items-center gap-2 ${
                     isCategorySelected(cat)
-                      ? 'bg-charcoal text-cream'
-                      : 'bg-cream-dark/50 text-charcoal hover:bg-cream-dark'
+                      ? 'bg-emerald-deep text-cream'
+                      : 'bg-cream-dark text-emerald-deep hover:bg-emerald-deep/10'
                   }`}
                 >
+                  {categoryIcons[cat[lang]]}
                   {cat[lang]}
                 </button>
               ))}
@@ -83,7 +99,7 @@ export default function Products() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="md:hidden flex items-center gap-2 px-4 py-2 border border-cream-dark rounded text-sm"
+                className="md:hidden flex items-center gap-2 px-4 py-2 border border-cream-dark rounded-lg text-sm text-emerald-deep"
               >
                 <SlidersHorizontal size={14} />
                 {t('products.filter')}
@@ -91,7 +107,7 @@ export default function Products() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-2 border border-cream-dark rounded bg-transparent text-sm focus:outline-none focus:border-gold"
+                className="px-4 py-2 border border-cream-dark rounded-lg bg-cream text-emerald-deep text-sm focus:outline-none focus:border-gold"
               >
                 <option value="default">{t('products.sortDefault')}</option>
                 <option value="price-asc">{t('products.sortPriceAsc')}</option>

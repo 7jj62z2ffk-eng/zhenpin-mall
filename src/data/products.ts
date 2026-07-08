@@ -3,230 +3,396 @@ import { Product, Review } from '../types';
 export const products: Product[] = [
   {
     id: '1',
-    name: { zh: '臻选手工皮具钱包', en: 'Premium Handcrafted Leather Wallet' },
-    category: { zh: '皮具', en: 'Leather' },
-    price: 1280,
-    originalPrice: 1680,
-    images: ['https://images.unsplash.com/photo-1627123424574-181ce5171c98?w=600&h=600&fit=crop'],
+    name: { en: 'Cardamom & Cinnamon Digestive Tea', ar: 'شاي الهضم بالهيل والقرفة' },
+    category: { en: 'Middle Eastern Classics', ar: 'كلاسيكيات شرقية' },
+    price: 24,
+    originalPrice: 32,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=cardamom%20cinnamon%20tea%20golden%20cup%20spices%20warm%20luxury%20middle%20eastern%20aesthetic&image_size=square'],
     description: {
-      zh: '采用意大利进口头层牛皮，经由二十年经验工匠手工缝制。每一针每一线都凝聚着匠心与温度，随着时间推移，皮革会呈现出独一无二的温润光泽。',
-      en: 'Made with Italian imported top-grain leather, hand-stitched by artisans with 20 years of experience. Every stitch embodies craftsmanship and warmth. Over time, the leather develops a unique, lustrous patina.'
+      en: 'A beloved Middle Eastern blend featuring Ceylon cinnamon, cardamom pods, ginger, licorice root, and red date slices. Perfect after heavy meals to ease digestion, reduce bloating, and stabilize blood sugar. Can be enjoyed hot or cold. Essential for Iftar during Ramadan.',
+      ar: 'مزيج شرق أوسطي محبوب يضم القرفة السيلانية، حبوب الهيل، الزنجبيل، جذور عرق السوس، وشرائح التمر الأحمر. مثالي بعد الوجبات الثقيلة لتسهيل الهضم، وتقليل الانتفاخ، وتثبيت سكر الدم. يمكن تناوله ساخناً أو بارداً. ضروري لإفطار رمضان.'
+    },
+    ingredients: {
+      en: 'Cardamom, Ceylon Cinnamon, Ginger, Licorice Root, Red Date',
+      ar: 'هيل، قرفة سيلانية، زنجبيل، عرق السوس، تمر أحمر'
+    },
+    benefits: ['Aids digestion', 'Reduces bloating', 'Stabilizes blood sugar', 'Warms the stomach', 'Caffeine-free'],
+    brewMethod: {
+      en: 'Steep 1 tea bag in 250ml hot water (90°C) for 5–7 minutes. For cold brew, steep in cold water for 4 hours.',
+      ar: 'انقع كيس الشاي الواحد في 250 مل ماء ساخن (90°م) لمدة 5-7 دقائق. للتبريد، انقع في ماء بارد لمدة 4 ساعات.'
     },
     specifications: [
-      { key: { zh: '材质', en: 'Material' }, value: { zh: '意大利头层牛皮', en: 'Italian Top-Grain Leather' } },
-      { key: { zh: '尺寸', en: 'Dimensions' }, value: { zh: '11cm x 9cm x 2cm', en: '11cm x 9cm x 2cm' } },
-      { key: { zh: '卡位', en: 'Card Slots' }, value: { zh: '6个', en: '6' } },
-      { key: { zh: '产地', en: 'Origin' }, value: { zh: '中国·上海', en: 'Shanghai, China' } },
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '36g (3g x 12 sachets)', ar: '36 جرام (3 جرام × 12 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'UAE blended', ar: 'مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'Caffeine-free', ar: 'خالٍ من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
     ],
     rating: 4.9,
-    reviews: 128,
+    reviews: 312,
     inStock: true,
-    tags: [{ zh: '热销', en: 'Bestseller' }, { zh: '手工', en: 'Handmade' }],
+    tags: [{ en: 'Bestseller', ar: 'الأكثر مبيعاً' }, { en: 'Ramadan Essential', ar: 'ضروري لرمضان' }],
+    isHalal: true,
+    isOrganic: true,
+    weight: '36g',
+    boxSize: '12 sachets',
   },
   {
     id: '2',
-    name: { zh: '古典檀木香薰炉', en: 'Classic Sandalwood Incense Burner' },
-    category: { zh: '香道', en: 'Aromatherapy' },
-    price: 899,
-    images: ['https://images.unsplash.com/photo-1602928321679-560bb453f190?w=600&h=600&fit=crop'],
+    name: { en: 'Saffron & Rose Glow Tea', ar: 'شاي الزعفران والورد للتألق' },
+    category: { en: 'Premium Gift', ar: 'هدايا فاخرة' },
+    price: 45,
+    originalPrice: 58,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=saffron%20rose%20tea%20golden%20luxury%20cup%20dried%20rose%20petals%20elegant%20middle%20eastern&image_size=square'],
     description: {
-      zh: '选用百年黑檀木整料雕刻，纹理细腻如丝。搭配天然沉香，在袅袅烟雾中感受东方禅意，为居家空间增添一份宁静雅致。',
-      en: 'Crafted from century-old black sandalwood with fine, silky grain. Paired with natural agarwood, experience Eastern Zen amidst curling wisps of smoke, adding tranquility and elegance to your living space.'
+      en: 'Our most luxurious blend featuring premium Iranian saffron, Damascus rose petals, lemon verbena, and a touch of chamomile. Soothes the mind, brightens complexion, and provides powerful antioxidants. The perfect gift for someone special.',
+      ar: 'أفخر مزيج لدينا يضم زعفران إيراني فاخر، بتلات ورد دمشقي، ليمون فيربينا، ولمسة البابونج. يهدئ العقل، ي brighten البشرة، ويوفر مضادات أكسدة قوية. الهدية المثالية لشخص مميز.'
+    },
+    ingredients: {
+      en: 'Iranian Saffron, Damascus Rose, Lemon Verbena, Chamomile',
+      ar: 'زعفران إيراني، ورد دمشقي، فيربينا الليمون، بابونج'
+    },
+    benefits: ['Brightens skin', 'Relieves anxiety', 'Rich in antioxidants', 'Promotes relaxation', 'Caffeine-free'],
+    brewMethod: {
+      en: 'Steep 1 tea bag in 250ml hot water (85°C) for 4–6 minutes. Best enjoyed in the evening.',
+      ar: 'انقع كيس الشاي في 250 مل ماء ساخن (85°م) لمدة 4-6 دقائق. الأفضل تناوله في المساء.'
     },
     specifications: [
-      { key: { zh: '材质', en: 'Material' }, value: { zh: '黑檀木', en: 'Black Sandalwood' } },
-      { key: { zh: '尺寸', en: 'Dimensions' }, value: { zh: '直径12cm x 高8cm', en: 'Diameter 12cm x H 8cm' } },
-      { key: { zh: '工艺', en: 'Craftsmanship' }, value: { zh: '手工雕刻', en: 'Hand-Carved' } },
-      { key: { zh: '配件', en: 'Accessories' }, value: { zh: '含铜制香插', en: 'Includes Copper Incense Holder' } },
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '36g (3g x 12 sachets)', ar: '36 جرام (3 جرام × 12 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'UAE blended', ar: 'مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'Caffeine-free', ar: 'خالٍ من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
     ],
-    rating: 4.8,
-    reviews: 86,
+    rating: 5.0,
+    reviews: 186,
     inStock: true,
-    tags: [{ zh: '新品', en: 'New' }],
+    tags: [{ en: 'Limited Edition', ar: 'إصدار محدود' }, { en: 'Gift Favorite', ar: 'مفضل للهدايا' }],
+    isHalal: true,
+    isOrganic: true,
+    weight: '36g',
+    boxSize: '12 sachets',
   },
   {
     id: '3',
-    name: { zh: '珐琅彩茶具套装', en: 'Cloisonne Tea Set' },
-    category: { zh: '茶具', en: 'Tea Ware' },
-    price: 2680,
-    originalPrice: 3200,
-    images: ['https://images.unsplash.com/photo-1563822249366-3efb23b8e0c9?w=600&h=600&fit=crop'],
+    name: { en: 'Hibiscus & Mint Cool Tea', ar: 'شاي الكركدى والنعناع المنعش' },
+    category: { en: 'Middle Eastern Classics', ar: 'كلاسيكيات شرقية' },
+    price: 22,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=hibiscus%20mint%20tea%20ruby%20red%20cold%20glass%20fresh%20lemongrass%20middle%20eastern&image_size=square'],
     description: {
-      zh: '传承景泰蓝工艺，以纯铜为胎，手工掐丝填釉，经八百度高温烧制而成。色彩绚丽持久，既是实用茶具，更是值得收藏的艺术品。',
-      en: 'Inheriting the cloisonne craft, with pure copper as the base, hand-wired and glazed, fired at 800°C. Vibrant and long-lasting colors — both practical tea ware and a collectible work of art.'
+      en: 'A refreshing twist on the traditional Karkadeh, blending hibiscus flowers, fresh mint, lemongrass, and dried orange slices. Naturally cooling, diuretic, and blood pressure friendly. The ultimate summer thirst-quencher, especially when iced.',
+      ar: 'لمسة منعشة على الكركديه التقليدي، يمزج أزهار الكركدى، النعناع الطازج، عشب الليمون، وشرائح البرتقال المجفف. منعش طبيعياً، مدر للبول، وصديق لضغط الدم. أفضل مشروب صيفي للترويح، خاصة عند تبريده.'
+    },
+    ingredients: {
+      en: 'Hibiscus (Karkadeh), Mint, Lemongrass, Dried Orange',
+      ar: 'كركدى، نعناع، عشب الليمون، برتقال مجفف'
+    },
+    benefits: ['Cooling effect', 'Reduces water retention', 'Blood pressure friendly', 'Rich in Vitamin C', 'Caffeine-free'],
+    brewMethod: {
+      en: 'Hot: Steep 5–7 minutes at 95°C. Cold: Steep 2 tea bags in 500ml cold water for 4 hours. Add honey to taste.',
+      ar: 'ساخن: انقع 5-7 دقائق عند 95°م. بارد: انقع كيسي شاي في 500 مل ماء بارد لمدة 4 ساعات. أضف العسل حسب الرغبة.'
     },
     specifications: [
-      { key: { zh: '包含', en: 'Includes' }, value: { zh: '茶壶1 + 茶杯4 + 茶盘1', en: '1 Teapot + 4 Cups + 1 Tray' } },
-      { key: { zh: '工艺', en: 'Craftsmanship' }, value: { zh: '景泰蓝珐琅', en: 'Cloisonne Enamel' } },
-      { key: { zh: '容量', en: 'Capacity' }, value: { zh: '茶壶300ml', en: 'Teapot 300ml' } },
-      { key: { zh: '包装', en: 'Packaging' }, value: { zh: '礼盒装', en: 'Gift Box' } },
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '36g (3g x 12 sachets)', ar: '36 جرام (3 جرام × 12 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'UAE blended', ar: 'مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'Caffeine-free', ar: 'خالٍ من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
     ],
-    rating: 5.0,
-    reviews: 42,
+    rating: 4.8,
+    reviews: 245,
     inStock: true,
-    tags: [{ zh: '限量', en: 'Limited' }, { zh: '礼品', en: 'Gift' }],
+    tags: [{ en: 'Summer Essential', ar: 'ضروري للصيف' }, { en: 'Iced Tea', ar: 'شاي مثلج' }],
+    isHalal: true,
+    weight: '36g',
+    boxSize: '12 sachets',
   },
   {
     id: '4',
-    name: { zh: '纯银手工项链', en: 'Pure Silver Handmade Necklace' },
-    category: { zh: '饰品', en: 'Jewelry' },
-    price: 1580,
-    images: ['https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=600&fit=crop'],
+    name: { en: 'Yuzhu & Ophiopogon Moisture Tea', ar: 'شاي يو تشو ولفوف الرطوبة' },
+    category: { en: 'Oriental Herbs', ar: 'أعشاب شرقية' },
+    price: 28,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=oriental%20herbal%20tea%20yuzhu%20lily%20bulb%20white%20porcelain%20cup%20elegant%20minimal%20green%20tones&image_size=square'],
     description: {
-      zh: '999纯银手工打造，表面采用古法磨砂工艺，呈现柔和哑光质感。简约几何造型，低调中彰显品味，适合日常佩戴。',
-      en: 'Handcrafted with 999 pure silver, featuring an ancient frosted finish for a soft matte texture. Simple geometric design, understated yet refined, perfect for everyday wear.'
+      en: 'A rare Eastern herbal blend combining Yuzhu (Solomon\'s Seal), Ophiopogon root, licorice, lemon slices, and a hint of mint. Designed to combat dry air-conditioned environments, soothe irritated throats, and calm internal heat. A caffeine-free hydration ritual inspired by ancient Chinese wellness traditions.',
+      ar: 'مزيج نادر من الأعشاب الشرقية يجمع يو تشو، جذر اللفوف، عرق السوس، شرائح الليمون، ولمسة من النعناع. مصمم لمكافحة الجو الجاف بالتكييف، وتلطيف الحلق المتهيج، وتبريد الحرارة الداخلية. طقس ترطيب خالٍ من الكافيين مستوحى من تقاليد العافية الصينية القديمة.'
+    },
+    ingredients: {
+      en: 'Yuzhu (Solomon\'s Seal), Ophiopogon Root, Licorice, Lemon, Mint',
+      ar: 'يو تشو، جذر اللفوف، عرق السوس، ليمون، نعناع'
+    },
+    benefits: ['Soothes dry throat', 'Combats AC dryness', 'Calms internal heat', 'All-day hydration', 'Caffeine-free'],
+    brewMethod: {
+      en: 'Steep 1 tea bag in 300ml hot water (80°C) for 6–8 minutes. Re-steep up to 2 times.',
+      ar: 'انقع كيس الشاي في 300 مل ماء ساخن (80°م) لمدة 6-8 دقائق. يمكن إعادة النقع حتى مرتين.'
     },
     specifications: [
-      { key: { zh: '材质', en: 'Material' }, value: { zh: '999纯银', en: '999 Pure Silver' } },
-      { key: { zh: '链长', en: 'Chain Length' }, value: { zh: '45cm + 5cm延长链', en: '45cm + 5cm Extender' } },
-      { key: { zh: '重量', en: 'Weight' }, value: { zh: '约8g', en: 'Approx. 8g' } },
-      { key: { zh: '工艺', en: 'Craftsmanship' }, value: { zh: '古法磨砂', en: 'Ancient Frosted Finish' } },
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '36g (3g x 12 sachets)', ar: '36 جرام (3 جرام × 12 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'China herbs, UAE blended', ar: 'أعشاب صينية، مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'Caffeine-free', ar: 'خالٍ من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
     ],
     rating: 4.7,
-    reviews: 215,
+    reviews: 98,
     inStock: true,
-    tags: [{ zh: '热销', en: 'Bestseller' }],
+    tags: [{ en: 'New Arrival', ar: 'وصل حديثاً' }, { en: 'Oriental Secret', ar: 'سر شرقي' }],
+    isHalal: true,
+    isOrganic: true,
+    weight: '36g',
+    boxSize: '12 sachets',
   },
   {
     id: '5',
-    name: { zh: '宣纸文房四宝套装', en: 'Xuan Paper Four Treasures Set' },
-    category: { zh: '文房', en: 'Stationery' },
-    price: 680,
-    images: ['https://images.unsplash.com/photo-1516961642265-531546e84af2?w=600&h=600&fit=crop'],
+    name: { en: 'Goji & Red Date Vitality Tea', ar: 'شاي الغوجي والتمر الأحمر للحيوية' },
+    category: { en: 'Oriental Herbs', ar: 'أعشاب شرقية' },
+    price: 26,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=goji%20berry%20red%20date%20tea%20golden%20amber%20cup%20chinese%20herbal%20warm%20elegant%20luxury&image_size=square'],
     description: {
-      zh: '精选安徽泾县宣纸，配以湖笔、徽墨、端砚。笔墨纸砚，四宝俱全。无论是书法初学者还是资深爱好者，都能找到书写乐趣。',
-      en: 'Premium Xuan paper from Jingxian, Anhui, paired with Hu brush, Hui ink, and Duan inkstone. The four treasures complete — perfect for both calligraphy beginners and seasoned enthusiasts.'
+      en: 'A nurturing blend of Ningxia goji berries, pitted red dates, cinnamon, and rose petals. Specially formulated for women\'s wellness — easing fatigue, supporting blood vitality, and providing gentle warmth during sensitive times. A thoughtful gift for the women in your life.',
+      ar: 'مزيج مُغذٍ من توت الغوجي من نينغشيا، التمر الأحمر منزوع النوى، القرفة، وبتلات الورد. مُصاغ خصيصاً لعافية المرأة — يخفف التعب، يدعم حيوية الدم، ويوفر دفئاً لطيفاً خلال الأوقات الحساسة. هدية مدروسة للنساء في حياتك.'
+    },
+    ingredients: {
+      en: 'Ningxia Goji Berry, Red Date, Cinnamon, Rose Petals',
+      ar: 'توت غوجي من نينغشيا، تمر أحمر، قرفة، بتلات ورد'
+    },
+    benefits: ['Boosts energy', 'Supports blood vitality', 'Eases fatigue', 'Gentle warming', 'Caffeine-free'],
+    brewMethod: {
+      en: 'Steep 1 tea bag in 300ml hot water (90°C) for 5–8 minutes. Best enjoyed in the morning or afternoon.',
+      ar: 'انقع كيس الشاي في 300 مل ماء ساخن (90°م) لمدة 5-8 دقائق. الأفضل تناوله في الصباح أو بعد الظهر.'
     },
     specifications: [
-      { key: { zh: '宣纸', en: 'Xuan Paper' }, value: { zh: '生宣四尺对开50张', en: 'Raw Xuan, 4-chi folded, 50 sheets' } },
-      { key: { zh: '毛笔', en: 'Brush' }, value: { zh: '狼毫/羊毫各1支', en: '1 Wolf-hair + 1 Goat-hair' } },
-      { key: { zh: '墨', en: 'Ink' }, value: { zh: '徽墨1锭', en: '1 Hui Ink Stick' } },
-      { key: { zh: '砚', en: 'Inkstone' }, value: { zh: '端砚小号', en: 'Small Duan Inkstone' } },
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '36g (3g x 12 sachets)', ar: '36 جرام (3 جرام × 12 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'China herbs, UAE blended', ar: 'أعشاب صينية، مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'Caffeine-free', ar: 'خالٍ من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
     ],
-    rating: 4.8,
-    reviews: 93,
+    rating: 4.9,
+    reviews: 156,
     inStock: true,
-    tags: [{ zh: '新品', en: 'New' }, { zh: '礼品', en: 'Gift' }],
+    tags: [{ en: 'Women\'s Wellness', ar: 'عافية المرأة' }, { en: 'Gift Box', ar: 'صندوق هدية' }],
+    isHalal: true,
+    isOrganic: true,
+    weight: '36g',
+    boxSize: '12 sachets',
   },
   {
     id: '6',
-    name: { zh: '手工陶瓷花瓶', en: 'Handmade Ceramic Vase' },
-    category: { zh: '家居', en: 'Home Decor' },
-    price: 780,
-    originalPrice: 980,
-    images: ['https://images.unsplash.com/photo-1612196808214-b7e239e5bbae?w=600&h=600&fit=crop'],
+    name: { en: 'Dandelion & Licorice Detox Tea', ar: 'شاي الهندباء وعرق السوس للتنقية' },
+    category: { en: 'Functional Blends', ar: 'مزيج وظيفي' },
+    price: 25,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=dandelion%20root%20licorice%20detox%20tea%20amber%20golden%20cup%20herbal%20wellness%20elegant%20minimal&image_size=square'],
     description: {
-      zh: '景德镇手工拉坯，采用天然矿物釉料，经1300度高温还原焰烧制。瓶身纹理自然流动，如同山水墨画，每一件都是孤品。',
-      en: 'Hand-thrown in Jingdezhen, using natural mineral glazes, fired at 1300°C in reduction atmosphere. Natural flowing patterns like landscape ink paintings — each piece is one of a kind.'
+      en: 'A gentle detox blend featuring roasted dandelion root, licorice, mint, and ginger. Supports the body\'s natural cleansing processes, reduces water retention, and helps recover from heavy, oily meals. No harsh laxatives — just pure botanical support.',
+      ar: 'مزيج تنقية لطيف يضم جذر الهندباء المحمص، عرق السوس، النعناع، والزنجبيل. يدعم عمليات التطهير الطبيعية للجسم، يقلل الاحتباس المائي، ويساعد على التعافي من الوجبات الثقيلة والدهنية. لا ملينات قاسية — فقط دعم نباتي نقي.'
+    },
+    ingredients: {
+      en: 'Dandelion Root, Licorice, Mint, Ginger',
+      ar: 'جذر الهندباء، عرق السوس، نعناع، زنجبيل'
+    },
+    benefits: ['Gentle detox', 'Reduces bloating', 'Supports liver health', 'Post-meal recovery', 'Caffeine-free'],
+    brewMethod: {
+      en: 'Steep 1 tea bag in 250ml hot water (95°C) for 5–7 minutes. Drink after lunch or dinner.',
+      ar: 'انقع كيس الشاي في 250 مل ماء ساخن (95°م) لمدة 5-7 دقائق. اشرب بعد الغداء أو العشاء.'
     },
     specifications: [
-      { key: { zh: '材质', en: 'Material' }, value: { zh: '高白泥', en: 'High-White Porcelain Clay' } },
-      { key: { zh: '尺寸', en: 'Dimensions' }, value: { zh: '高25cm x 口径8cm', en: 'H 25cm x Rim 8cm' } },
-      { key: { zh: '工艺', en: 'Craftsmanship' }, value: { zh: '手工拉坯', en: 'Hand-Thrown' } },
-      { key: { zh: '釉色', en: 'Glaze' }, value: { zh: '窑变青釉', en: 'Kiln-Change Celadon' } },
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '36g (3g x 12 sachets)', ar: '36 جرام (3 جرام × 12 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'UAE blended', ar: 'مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'Caffeine-free', ar: 'خالٍ من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
     ],
-    rating: 4.9,
-    reviews: 67,
+    rating: 4.6,
+    reviews: 134,
     inStock: true,
-    tags: [{ zh: '限量', en: 'Limited' }],
+    tags: [{ en: 'Detox', ar: 'تنقية' }, { en: 'Fitness Friendly', ar: 'صديق اللياقة' }],
+    isHalal: true,
+    weight: '36g',
+    boxSize: '12 sachets',
   },
   {
     id: '7',
-    name: { zh: '真丝刺绣团扇', en: 'Silk Embroidered Round Fan' },
-    category: { zh: '工艺', en: 'Crafts' },
-    price: 458,
-    images: ['https://images.unsplash.com/photo-1584992236310-6eddd734e6e6?w=600&h=600&fit=crop'],
+    name: { en: 'Lavender & Holy Basil Sleep Tea', ar: 'شاي الخزامى والريحان المقدس للنوم' },
+    category: { en: 'Functional Blends', ar: 'مزيج وظيفي' },
+    price: 27,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=lavender%20holy%20basil%20tulsi%20sleep%20tea%20purple%20golden%20cup%20calming%20evening%20elegant&image_size=square'],
     description: {
-      zh: '选用太湖流域桑蚕丝，由苏绣非遗传承人亲手绣制。扇面图案栩栩如生，扇骨采用老竹经十二道工序打磨，轻盈而坚固。',
-      en: 'Made with Taihu Lake mulberry silk, hand-embroidered by Su embroidery intangible heritage inheritors. Vivid patterns on the fan surface; ribs crafted from aged bamboo through 12 polishing processes — light yet sturdy.'
+      en: 'A calming nighttime ritual featuring Holy Basil (Tulsi), French lavender, chamomile, and lemon balm. Naturally eases tension, quiets racing thoughts, and prepares the mind for deep, restful sleep. No melatonin — just pure botanical tranquility.',
+      ar: 'طقس مسائي مهدئ يضم الريحان المقدس (تولسي)، الخزامى الفرنسية، البابونج، وبلسم الليمون. يخفف التوتر طبيعياً، يهدئ الأفكار المتسارعة، ويُعد العقل لنوم عميق ومريح. لا ميلاتونين — فقط هدوء نباتي نقي.'
+    },
+    ingredients: {
+      en: 'Holy Basil (Tulsi), Lavender, Chamomile, Lemon Balm',
+      ar: 'ريحان مقدس (تولسي)، خزامى، بابونج، بلسم ليمون'
+    },
+    benefits: ['Promotes sleep', 'Reduces anxiety', 'Quiets the mind', 'Stress relief', 'Caffeine-free'],
+    brewMethod: {
+      en: 'Steep 1 tea bag in 250ml hot water (85°C) for 5–7 minutes. Drink 30 minutes before bedtime.',
+      ar: 'انقع كيس الشاي في 250 مل ماء ساخن (85°م) لمدة 5-7 دقائق. اشرب 30 دقيقة قبل النوم.'
     },
     specifications: [
-      { key: { zh: '扇面', en: 'Fan Surface' }, value: { zh: '真丝', en: 'Pure Silk' } },
-      { key: { zh: '扇骨', en: 'Ribs' }, value: { zh: '老竹', en: 'Aged Bamboo' } },
-      { key: { zh: '直径', en: 'Diameter' }, value: { zh: '25cm', en: '25cm' } },
-      { key: { zh: '工艺', en: 'Craftsmanship' }, value: { zh: '苏绣双面绣', en: 'Suzhou Double-Sided Embroidery' } },
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '36g (3g x 12 sachets)', ar: '36 جرام (3 جرام × 12 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'UAE blended', ar: 'مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'Caffeine-free', ar: 'خالٍ من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
     ],
-    rating: 4.9,
-    reviews: 54,
+    rating: 4.8,
+    reviews: 203,
     inStock: true,
-    tags: [{ zh: '手工', en: 'Handmade' }, { zh: '新品', en: 'New' }],
+    tags: [{ en: 'Sleep Aid', ar: 'مساعد النوم' }, { en: 'Stress Relief', ar: 'تخفيف التوتر' }],
+    isHalal: true,
+    isOrganic: true,
+    weight: '36g',
+    boxSize: '12 sachets',
   },
   {
     id: '8',
-    name: { zh: '古琴造型蓝牙音箱', en: 'Guqin-Shaped Bluetooth Speaker' },
-    category: { zh: '数码', en: 'Electronics' },
-    price: 1280,
-    images: ['https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&h=600&fit=crop'],
+    name: { en: 'Plantain & Mint Men\'s Wellness Tea', ar: 'شاي اللسانة والنعناع لعافية الرجال' },
+    category: { en: 'Functional Blends', ar: 'مزيج وظيفي' },
+    price: 24,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=plantain%20mint%20mens%20wellness%20tea%20dark%20green%20cup%20herbal%20strong%20masculine%20elegant&image_size=square'],
     description: {
-      zh: '外观设计灵感源自唐代古琴，内置高保真双扬声器，支持蓝牙5.0连接。既是音箱也是摆件，让科技与传统美学完美融合。',
-      en: 'Design inspired by Tang Dynasty guqin (ancient zither), with built-in high-fidelity dual speakers and Bluetooth 5.0. Both a speaker and a decorative piece — the perfect fusion of technology and traditional aesthetics.'
+      en: 'A targeted blend for men\'s daily wellness, combining plantain leaf, peppermint, cardamom, and licorice. Supports urinary tract comfort, reduces inflammation from sedentary lifestyles, and provides a clean, refreshing finish. Sleek, modern packaging designed for the modern gentleman.',
+      ar: 'مزيج موجه لعافية الرجال اليومية، يجمع ورق اللسانة، النعناع الفلفلي، الهيل، وعرق السوس. يدعم راحة المسالك البولية، يقلل الالتهاب من نمط الحياة الخامل، ويوفر نهاية منعشة ونظيفة. تعبئة أنيقة وعصرية مصممة للرجل العصري.'
+    },
+    ingredients: {
+      en: 'Plantain Leaf, Peppermint, Cardamom, Licorice',
+      ar: 'ورق اللسانة، نعناع فلفلي، هيل، عرق السوس'
+    },
+    benefits: ['Urinary comfort', 'Anti-inflammatory', 'Refreshing finish', 'Daily wellness', 'Caffeine-free'],
+    brewMethod: {
+      en: 'Steep 1 tea bag in 300ml hot water (90°C) for 5–7 minutes. Enjoy 1–2 cups daily.',
+      ar: 'انقع كيس الشاي في 300 مل ماء ساخن (90°م) لمدة 5-7 دقائق. استمتع ب1-2 كوب يومياً.'
     },
     specifications: [
-      { key: { zh: '材质', en: 'Material' }, value: { zh: '黑胡桃木', en: 'Black Walnut Wood' } },
-      { key: { zh: '蓝牙', en: 'Bluetooth' }, value: { zh: '5.0', en: '5.0' } },
-      { key: { zh: '续航', en: 'Battery Life' }, value: { zh: '12小时', en: '12 Hours' } },
-      { key: { zh: '功率', en: 'Power' }, value: { zh: '20W', en: '20W' } },
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '36g (3g x 12 sachets)', ar: '36 جرام (3 جرام × 12 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'UAE blended', ar: 'مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'Caffeine-free', ar: 'خالٍ من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
     ],
-    rating: 4.6,
+    rating: 4.5,
+    reviews: 87,
+    inStock: true,
+    tags: [{ en: 'Men\'s Health', ar: 'صحة الرجال' }, { en: 'Daily Ritual', ar: 'طقس يومي' }],
+    isHalal: true,
+    weight: '36g',
+    boxSize: '12 sachets',
+  },
+  {
+    id: '9',
+    name: { en: 'Turmeric & Lemongrass Immunity Tea', ar: 'شاي الكركم وعشب الليمون للمناعة' },
+    category: { en: 'Functional Blends', ar: 'مزيج وظيفي' },
+    price: 26,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=turmeric%20lemongrass%20immunity%20tea%20golden%20yellow%20cup%20spices%20warm%20wellness%20elegant&image_size=square'],
+    description: {
+      en: 'A powerful immune-supporting blend of turmeric, ginger, lemongrass, clove, and dried orange. Rich in anti-inflammatory compounds with a warm, spicy flavor profile that resonates with Middle Eastern palates. Your daily shield for seasonal transitions.',
+      ar: 'مزيج قوي لدعم المناعة من الكركم، الزنجبيل، عشب الليمون، القرنفل، والبرتقال المجفف. غني بمركبات مضادة للالتهابات مع نكهة حارة وبهيجة تتناغم مع المذاق الشرق أوسطي. درعك اليومي للتغيرات الموسمية.'
+    },
+    ingredients: {
+      en: 'Turmeric, Ginger, Lemongrass, Clove, Dried Orange',
+      ar: 'كركم، زنجبيل، عشب ليمون، قرنفل، برتقال مجفف'
+    },
+    benefits: ['Immune support', 'Anti-inflammatory', 'Seasonal defense', 'Warming spice', 'Caffeine-free'],
+    brewMethod: {
+      en: 'Steep 1 tea bag in 300ml hot water (95°C) for 5–7 minutes. Add a teaspoon of honey for extra warmth.',
+      ar: 'انقع كيس الشاي في 300 مل ماء ساخن (95°م) لمدة 5-7 دقائق. أضف ملعقة صغيرة من العسل لدفء إضافي.'
+    },
+    specifications: [
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '36g (3g x 12 sachets)', ar: '36 جرام (3 جرام × 12 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'UAE blended', ar: 'مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'Caffeine-free', ar: 'خالٍ من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
+    ],
+    rating: 4.7,
     reviews: 178,
     inStock: true,
-    tags: [{ zh: '热销', en: 'Bestseller' }],
+    tags: [{ en: 'Immunity', ar: 'مناعة' }, { en: 'Year-round', ar: 'على مدار العام' }],
+    isHalal: true,
+    isOrganic: true,
+    weight: '36g',
+    boxSize: '12 sachets',
+  },
+  {
+    id: '10',
+    name: { en: 'Ramadan Wellness Gift Set', ar: 'طقم هدية العافية لرمضان' },
+    category: { en: 'Ramadan Collection', ar: 'مجموعة رمضان' },
+    price: 78,
+    originalPrice: 95,
+    images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=ramadan%20gift%20box%20luxury%20tea%20set%20golden%20green%20islamic%20geometric%20pattern%20elegant%20packaging&image_size=square'],
+    description: {
+      en: 'The ultimate Ramadan gift set featuring three specially curated blends: Suhoor Saffron Rose (anti-fatigue, mood support), Iftar Cardamom Digestive (post-meal relief), and Nighttime Lavender Sleep (restful sleep). Beautifully presented in a premium gift box with gold foil accents. 36 sachets total (12 of each).',
+      ar: 'أفضل طقم هدايا لرمضان يضم ثلاثة مزيجات مختارة بعناية: زعفران وورد السحور (مضاد للتعب، دعم المزاج)، هيل الهضم للإفطار (إعفاء بعد الوجبة)، وخزامى النوم الليلي (نوم مريح). مُقدم بشكل جميل في صندوق هدية فاخر مع لمسات ذهبية. 36 كيساً إجمالاً (12 من كل نوع).'
+    },
+    ingredients: {
+      en: 'Saffron Rose blend, Cardamom Digestive blend, Lavender Sleep blend',
+      ar: 'مزيج زعفران وورد، مزيج هيل هضمي، مزيج خزامى نوم'
+    },
+    benefits: ['Complete Ramadan support', 'Suhoor energy', 'Iftar digestion', 'Nighttime rest', 'Gift-ready packaging'],
+    brewMethod: {
+      en: 'Each blend has its own brewing instructions printed on the inner sachets. Follow the guide inside the box.',
+      ar: 'لكل مزيج تعليمات خاصة مطبوعة على الأكياس الداخلية. اتبع الدليل داخل الصندوق.'
+    },
+    specifications: [
+      { key: { en: 'Net Weight', ar: 'الوزن الصافي' }, value: { en: '108g (3g x 36 sachets)', ar: '108 جرام (3 جرام × 36 كيس)' } },
+      { key: { en: 'Origin', ar: 'الأصل' }, value: { en: 'UAE blended', ar: 'مُخلوط في الإمارات' } },
+      { key: { en: 'Caffeine', ar: 'الكافيين' }, value: { en: 'All caffeine-free', ar: 'جميعها خالية من الكافيين' } },
+      { key: { en: 'Certification', ar: 'الشهادة' }, value: { en: 'Halal Certified', ar: 'حلال معتمد' } },
+    ],
+    rating: 5.0,
+    reviews: 89,
+    inStock: true,
+    tags: [{ en: 'Ramadan Special', ar: 'رمضان خاص' }, { en: 'Gift Set', ar: 'طقم هدية' }],
+    isHalal: true,
+    isOrganic: true,
+    weight: '108g',
+    boxSize: '36 sachets (3 blends)',
   },
 ];
 
 export const categories = [
-  { zh: '全部', en: 'All' },
-  { zh: '皮具', en: 'Leather' },
-  { zh: '香道', en: 'Aromatherapy' },
-  { zh: '茶具', en: 'Tea Ware' },
-  { zh: '饰品', en: 'Jewelry' },
-  { zh: '文房', en: 'Stationery' },
-  { zh: '家居', en: 'Home Decor' },
-  { zh: '工艺', en: 'Crafts' },
-  { zh: '数码', en: 'Electronics' },
+  { en: 'All', ar: 'الكل' },
+  { en: 'Middle Eastern Classics', ar: 'كلاسيكيات الشرق الأوسط' },
+  { en: 'Oriental Herbs', ar: 'أعشاب الشرق الأقصى' },
+  { en: 'Functional Blends', ar: 'المزيجات الوظيفية' },
+  { en: 'Premium Gift', ar: 'هدايا فاخرة' },
+  { en: 'Ramadan Collection', ar: 'مجموعة رمضان' },
 ];
 
 export const reviews: Review[] = [
   {
     id: '1',
-    name: { zh: '林女士', en: 'Ms. Lin' },
+    name: { en: 'Fatima Al-Rashid', ar: 'فاطمة الرشيد' },
     rating: 5,
     comment: {
-      zh: '皮具钱包质感太好了，手感细腻，缝线工整。送给先生的生日礼物，他非常喜欢。',
-      en: 'The leather wallet has amazing quality, delicate feel, and neat stitching. Bought it as a birthday gift for my husband — he loves it very much.'
+      en: 'The Cardamom & Cinnamon tea is absolutely divine! Perfect after our family dinners. My husband loves it too. Will definitely repurchase for Ramadan.',
+      ar: 'شاي الهيل والقرفة إلهي تماماً! مثالي بعد عشاء عائلتنا. زوجي يحبه أيضاً. سأعيد الشراء بالتأكيد لرمضان.'
     },
     date: '2025-06-15',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=1',
   },
   {
     id: '2',
-    name: { zh: '张先生', en: 'Mr. Zhang' },
+    name: { en: 'Omar Hassan', ar: 'عمر حسن' },
     rating: 5,
     comment: {
-      zh: '香薰炉的做工超出预期，檀木纹理很美，放在书房里整个空间都提升了一个档次。',
-      en: 'The craftsmanship of the incense burner exceeded my expectations. The sandalwood grain is beautiful, and it really elevates the whole study room.'
+      en: 'Bought the Ramadan gift set for my mother. The packaging is stunning and the teas are exceptional quality. She uses the digestive tea every night after Iftar.',
+      ar: 'اشتريت طقم هدية رمضان لأمي. التعبير مذهل والشاي جودة استثنائية. تستخدم شاي الهضم كل ليلة بعد الإفطار.'
     },
     date: '2025-06-10',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=2',
   },
   {
     id: '3',
-    name: { zh: '王女士', en: 'Ms. Wang' },
+    name: { en: 'Sarah Mitchell', ar: 'سارة ميتشيل' },
     rating: 5,
     comment: {
-      zh: '茶具套装太精美了，色彩比图片还要好看。送给客户很有面子，已经回购三套了。',
-      en: 'The tea set is exquisite, the colors look even better than in the pictures. Great for gifting to clients — I have repurchased three sets already.'
+      en: 'As an expat in Dubai, finding quality caffeine-free teas was a challenge. The Hibiscus & Mint is my daily go-to. Love the cold brew option for summer!',
+      ar: 'كأجنبية في دبي، كان العثور على شاي خالٍ من الكافيين بجودة عالية تحدياً. الكركدى والنعناع هو خياري اليومي. أحب خيار التبريد للصيف!'
     },
     date: '2025-05-28',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=3',
   },
   {
     id: '4',
-    name: { zh: '陈先生', en: 'Mr. Chen' },
+    name: { en: 'Khalid Al-Mansouri', ar: 'خالد المنصوري' },
     rating: 4,
     comment: {
-      zh: '项链设计简约大方，日常佩戴很合适。纯银材质不过敏，做工也很好。',
-      en: 'The necklace design is simple and elegant, perfect for everyday wear. Pure silver material causes no allergies, and the craftsmanship is excellent.'
+      en: 'The Men\'s Wellness tea surprised me. Clean taste, not too herbal. I drink it after gym sessions. Would recommend trying the immunity blend too.',
+      ar: 'شاي عافية الرجال فاجأني. طعم نظيف، ليس عشبياً جداً. أشربه بعد جلسات النادي الرياضي. أوصي بتجربة مزيج المناعة أيضاً.'
     },
     date: '2025-05-20',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=4',

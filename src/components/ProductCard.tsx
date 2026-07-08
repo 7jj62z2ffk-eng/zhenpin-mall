@@ -16,10 +16,9 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
-  const lang = i18n.language as 'zh' | 'en';
+  const lang = i18n.language as 'en' | 'ar';
 
   const hasSaleTag = product.originalPrice !== undefined;
-  const hasLimitedTag = product.tags.some(tag => tag.zh === '限量' || tag.en === 'Limited');
   const discount = product.originalPrice ? Math.round((1 - product.price / product.originalPrice) * 100) : 0;
 
   return (
@@ -28,11 +27,11 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+      className="group bg-cream rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-500"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative aspect-square overflow-hidden bg-gray-50">
+      <div className="relative aspect-square overflow-hidden bg-cream-dark">
         <motion.img
           src={product.images[0]}
           alt={product.name[lang]}
@@ -41,21 +40,21 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           transition={{ duration: 0.6, ease: 'easeOut' }}
         />
         {hasSaleTag && (
-          <span className="absolute top-4 left-4 bg-error text-white text-xs font-bold px-3 py-1.5 rounded-full">
+          <span className="absolute top-3 left-3 bg-gold text-cream text-xs font-bold px-2 py-1 rounded">
             -{discount}%
           </span>
         )}
-        {hasLimitedTag && (
-          <span className="absolute top-4 right-4 bg-primary text-white text-xs font-medium px-3 py-1.5 rounded-full">
-            {t('productCard.limited')}
+        {product.isOrganic && (
+          <span className="absolute top-3 right-3 bg-emerald-dark text-cream text-xs font-medium px-2 py-1 rounded">
+            {t('productCard.organic')}
           </span>
         )}
         <button
           onClick={() => setIsLiked(!isLiked)}
-          className={`absolute top-4 right-4 p-2 rounded-full transition-all duration-300 ${
+          className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-300 ${
             isLiked 
-              ? 'bg-error text-white' 
-              : 'bg-white/80 backdrop-blur-sm text-text-secondary hover:text-error'
+              ? 'bg-gold text-cream' 
+              : 'bg-cream/80 backdrop-blur-sm text-stone hover:text-gold'
           }`}
         >
           <Heart size={16} className={isLiked ? 'fill-current' : ''} />
@@ -64,41 +63,45 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
           transition={{ duration: 0.3 }}
-          className="absolute bottom-4 left-4 right-4 flex gap-3"
+          className="absolute bottom-3 left-3 right-3 flex gap-2"
         >
           <button
             onClick={() => addItem(product.id)}
-            className="flex-1 bg-primary text-white py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary-dark transition-colors font-medium"
+            className="flex-1 bg-emerald-deep text-cream py-2.5 rounded-lg flex items-center justify-center gap-2 hover:bg-gold hover:text-emerald-deep transition-colors font-medium"
           >
-            <ShoppingBag size={16} />
-            <span>{t('productCard.addToCart')}</span>
+            <ShoppingBag size={14} />
+            <span className="text-sm">{t('productCard.addToCart')}</span>
           </button>
           <Link
             to={`/products/${product.id}`}
-            className="bg-white text-primary p-3 rounded-xl hover:bg-gray-100 transition-colors"
+            className="bg-cream text-emerald-deep p-2.5 rounded-lg hover:bg-cream-dark transition-colors"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </Link>
         </motion.div>
       </div>
-      <div className="p-5">
-        <p className="text-text-muted text-xs font-medium uppercase tracking-wider mb-2">{product.category[lang]}</p>
-        <h3 className="font-serif text-lg text-text-primary mb-3 line-clamp-2 group-hover:text-accent transition-colors">
+      <div className="p-4">
+        <div className="flex items-center gap-2 mb-1.5">
+          <p className="text-stone text-xs font-medium uppercase tracking-wider">{product.category[lang]}</p>
+          {product.isHalal && (
+            <span className="text-[10px] bg-gold/10 text-gold px-1.5 py-0.5 rounded font-medium">{t('productCard.halal')}</span>
+          )}
+        </div>
+        <h3 className="font-serif text-base text-emerald-deep mb-2 line-clamp-2 group-hover:text-gold transition-colors">
           {product.name[lang]}
         </h3>
         <div className="flex items-center justify-between">
-          <div className="flex items-baseline gap-2">
-            <span className="text-xl font-bold text-accent">¥{product.price}</span>
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-lg font-bold text-gold">AED {product.price}</span>
             {product.originalPrice && (
-              <span className="text-text-muted line-through text-sm">¥{product.originalPrice}</span>
+              <span className="text-stone-light line-through text-sm">AED {product.originalPrice}</span>
             )}
           </div>
-          <div className="flex items-center gap-1 text-text-muted text-sm">
-            <Star size={12} className="fill-accent text-accent" />
+          <div className="flex items-center gap-1 text-stone text-xs">
+            <Star size={12} className="fill-gold text-gold" />
             <span>{product.rating}</span>
-            <span className="text-text-muted/60">({product.reviews})</span>
           </div>
         </div>
       </div>

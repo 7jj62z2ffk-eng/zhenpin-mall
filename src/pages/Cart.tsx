@@ -8,25 +8,25 @@ import ScrollReveal from '../components/ScrollReveal';
 
 export default function Cart() {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language as 'zh' | 'en';
+  const lang = i18n.language as 'en' | 'ar';
   const { items, removeItem, updateQuantity, totalPrice, clearCart } = useCartStore();
 
   return (
-    <div className="pt-24 pb-16 px-6 min-h-screen">
+    <div className="pt-24 pb-16 px-6 min-h-screen bg-cream">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
-          <h1 className="font-serif text-4xl text-charcoal mb-8">{t('cart.title')}</h1>
+          <h1 className="font-serif text-4xl text-emerald-deep mb-8">{t('cart.title')}</h1>
         </ScrollReveal>
 
         {items.length === 0 ? (
           <ScrollReveal>
             <div className="text-center py-20">
               <ShoppingBag size={64} className="mx-auto mb-6 text-stone-light/40" />
-              <h2 className="font-serif text-xl text-charcoal mb-2">{t('cart.empty')}</h2>
+              <h2 className="font-serif text-xl text-emerald-deep mb-2">{t('cart.empty')}</h2>
               <p className="text-stone mb-6">{t('cart.emptyDesc')}</p>
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 bg-gold text-charcoal px-6 py-3 rounded hover:bg-gold-light transition-colors"
+                className="inline-flex items-center gap-2 bg-gold text-emerald-deep px-6 py-3 rounded-lg hover:bg-gold-light transition-colors"
               >
                 <span>{t('cart.goShopping')}</span>
                 <ArrowRight size={16} />
@@ -43,7 +43,7 @@ export default function Cart() {
                   <motion.div
                     layout
                     key={item.productId}
-                    className="flex gap-6 p-6 bg-cream-dark/20 rounded-lg"
+                    className="flex gap-6 p-6 bg-cream-dark/30 rounded-xl"
                   >
                     <Link to={`/products/${product.id}`}>
                       <img
@@ -55,34 +55,34 @@ export default function Cart() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
                         <Link to={`/products/${product.id}`}>
-                          <h3 className="font-serif text-lg text-charcoal">{product.name[lang]}</h3>
+                          <h3 className="font-serif text-lg text-emerald-deep">{product.name[lang]}</h3>
                         </Link>
                         <button
                           onClick={() => removeItem(item.productId)}
-                          className="text-stone hover:text-red-500 transition-colors"
+                          className="text-stone hover:text-gold transition-colors"
                         >
                           <Trash2 size={18} />
                         </button>
                       </div>
-                      <p className="text-gold font-medium mb-4">¥{product.price}</p>
+                      <p className="text-gold font-medium mb-4">AED {product.price}</p>
                       <div className="flex items-center gap-3">
-                        <div className="flex items-center border border-cream-dark rounded">
+                        <div className="flex items-center border border-cream-dark rounded-lg">
                           <button
                             onClick={() => updateQuantity(item.productId, item.quantity - 1)}
-                            className="p-2 hover:bg-cream-dark transition-colors"
+                            className="p-2 hover:bg-cream-dark transition-colors text-emerald-deep"
                           >
                             <Minus size={14} />
                           </button>
-                          <span className="w-10 text-center">{item.quantity}</span>
+                          <span className="w-10 text-center font-medium text-emerald-deep">{item.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.productId, item.quantity + 1)}
-                            className="p-2 hover:bg-cream-dark transition-colors"
+                            className="p-2 hover:bg-cream-dark transition-colors text-emerald-deep"
                           >
                             <Plus size={14} />
                           </button>
                         </div>
-                        <span className="ml-auto text-charcoal font-medium">
-                          ¥{product.price * item.quantity}
+                        <span className="ml-auto text-emerald-deep font-medium">
+                          AED {product.price * item.quantity}
                         </span>
                       </div>
                     </div>
@@ -91,38 +91,38 @@ export default function Cart() {
               })}
               <button
                 onClick={clearCart}
-                className="text-stone text-sm hover:text-red-500 transition-colors"
+                className="text-stone text-sm hover:text-gold transition-colors"
               >
                 {t('cart.clear')}
               </button>
             </div>
 
             <ScrollReveal>
-              <div className="bg-cream-dark/20 rounded-lg p-6 h-fit sticky top-28">
-                <h2 className="font-serif text-xl text-charcoal mb-6">{t('cart.summary')}</h2>
+              <div className="bg-cream-dark/30 rounded-xl p-6 h-fit sticky top-28">
+                <h2 className="font-serif text-xl text-emerald-deep mb-6">{t('cart.summary')}</h2>
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-stone">
                     <span>{t('cart.subtotal')}</span>
-                    <span>¥{totalPrice()}</span>
+                    <span>AED {totalPrice()}</span>
                   </div>
                   <div className="flex justify-between text-stone">
                     <span>{t('cart.shipping')}</span>
-                    <span>{t('cart.freeShipping')}</span>
+                    <span className="text-emerald-light">{t('cart.freeShipping')}</span>
                   </div>
-                  <div className="border-t border-cream-dark pt-3 flex justify-between font-serif text-lg text-charcoal">
+                  <div className="border-t border-cream-dark pt-3 flex justify-between font-serif text-lg text-emerald-deep">
                     <span>{t('cart.total')}</span>
-                    <span className="text-gold">¥{totalPrice()}</span>
+                    <span className="text-gold">AED {totalPrice()}</span>
                   </div>
                 </div>
                 <Link
                   to="/checkout"
-                  className="block w-full bg-charcoal text-cream text-center py-3 rounded hover:bg-gold transition-colors"
+                  className="block w-full bg-emerald-deep text-cream text-center py-3 rounded-lg hover:bg-gold hover:text-emerald-deep transition-colors font-medium"
                 >
                   {t('cart.checkout')}
                 </Link>
                 <Link
                   to="/products"
-                  className="block w-full text-center text-stone py-3 text-sm hover:text-charcoal transition-colors"
+                  className="block w-full text-center text-stone py-3 text-sm hover:text-emerald-deep transition-colors"
                 >
                   {t('cart.continueShopping')}
                 </Link>
