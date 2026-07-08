@@ -1,27 +1,62 @@
 import { useState, useRef } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ScrollReveal from '../components/ScrollReveal';
+
+// 请访问 https://web3forms.com/ 获取免费的 access_key，替换下方值即可直接发邮件
+const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY';
 
 export default function Contact() {
   const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const form = formRef.current;
     if (!form) return;
+
     const name = (form.elements.namedItem('name') as HTMLInputElement)?.value || '';
     const email = (form.elements.namedItem('email') as HTMLInputElement)?.value || '';
     const message = (form.elements.namedItem('message') as HTMLTextAreaElement)?.value || '';
-    
-    const subject = `Contact from ${name} | Saffron Heritage`;
-    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    
-    window.location.href = `mailto:381562675@qq.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    setTimeout(() => setSubmitted(true), 500);
+
+    // 如果未配置 Web3Forms key，回退到 mailto
+    if (WEB3FORMS_KEY === 'YOUR_ACCESS_KEY') {
+      const subject = `Contact from ${name} | Saffron Heritage`;
+      const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+      window.location.href = `mailto:381562675@qq.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setTimeout(() => setSubmitted(true), 500);
+      return;
+    }
+
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('access_key', WEB3FORMS_KEY);
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('message', message);
+    formData.append('subject', `New Contact from ${name} | Saffron Heritage`);
+    formData.append('replyto', email);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        alert('Failed to send. Please try again.');
+      }
+    } catch {
+      alert('Network error. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -110,10 +145,11 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-emerald-deep text-cream py-3 rounded-lg hover:bg-gold hover:text-emerald-deep transition-colors flex items-center justify-center gap-2"
+                  disabled={loading}
+                  className="w-full bg-emerald-deep text-cream py-3 rounded-lg hover:bg-gold hover:text-emerald-deep transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <Send size={16} />
-                  <span>{t('contact.send')}</span>
+                  {loading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                  <span>{loading ? 'Sending...' : t('contact.send')}</span>
                 </button>
               </form>
             )}
