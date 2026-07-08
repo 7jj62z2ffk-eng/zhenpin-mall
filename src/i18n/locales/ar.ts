@@ -108,6 +108,8 @@ export default {
     "total": "الإجمالي",
     "success": "تم تأكيد الطلب!",
     "successDesc": "شكراً لطلبك. لقد أرسلنا تأكيداً إلى بريدك الإلكتروني. رحلة عافيتك تبدأ قريباً.",
+    "orderNumber": "رقم الطلب",
+    "orderNumberNote": "يرجى حفظ رقم الطلب هذا للإشارة",
     "continueShopping": "مواصلة التسوق"
   },
   "about": {
@@ -185,5 +187,21 @@ export default {
     "en": "English",
     "ar": "العربية",
     "zh": "中文"
+  },
+  "admin": {
+    "title": "إدارة الطلبات",
+    "backToSite": "العودة إلى الموقع",
+    "searchPlaceholder": "البحث في الطلبات...",
+    "totalOrders": "{{count}} طلب",
+    "clearAll": "مسح الكل",
+    "noOrders": "لا يوجد طلبات",
+    "order": "طلب",
+    "orderDetails": "تفاصيل الطلب",
+    "customerInfo": "معلومات العميل",
+    "items": "العناصر",
+    "copyDetails": "نسخ تفاصيل الطلب",
+    "copied": "تم النسخ!",
+    "confirmDelete": "هل أنت متأكد من حذف هذا الطلب؟",
+    "confirmClearAll": "هل أنت متأكد من مسح جميع الطلبات؟"
   }
 }

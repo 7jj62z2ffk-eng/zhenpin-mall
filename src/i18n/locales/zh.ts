@@ -108,6 +108,8 @@ export default {
     "total": "总计",
     "success": "订单已确认！",
     "successDesc": "感谢您的订购。我们已将确认信息发送至您的邮箱。您的养生之旅即将开始。",
+    "orderNumber": "订单号",
+    "orderNumberNote": "请保存此订单号以供查询",
     "continueShopping": "继续购物"
   },
   "about": {
@@ -185,5 +187,21 @@ export default {
     "en": "English",
     "ar": "العربية",
     "zh": "中文"
+  },
+  "admin": {
+    "title": "订单管理",
+    "backToSite": "返回网站",
+    "searchPlaceholder": "搜索订单...",
+    "totalOrders": "{{count}} 个订单",
+    "clearAll": "清空全部",
+    "noOrders": "暂无订单",
+    "order": "订单",
+    "orderDetails": "订单详情",
+    "customerInfo": "客户信息",
+    "items": "商品列表",
+    "copyDetails": "复制订单详情",
+    "copied": "已复制!",
+    "confirmDelete": "确定要删除这个订单吗？",
+    "confirmClearAll": "确定要清空所有订单吗？"
   }
 }

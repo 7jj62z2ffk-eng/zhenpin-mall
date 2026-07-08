@@ -108,6 +108,8 @@ export default {
     "total": "Total",
     "success": "Order Confirmed!",
     "successDesc": "Thank you for your order. A confirmation has been sent to your email. Your wellness journey is about to begin.",
+    "orderNumber": "Order Number",
+    "orderNumberNote": "Please save this order number for reference",
     "continueShopping": "Continue Shopping"
   },
   "about": {
@@ -185,5 +187,21 @@ export default {
     "en": "English",
     "ar": "العربية",
     "zh": "中文"
+  },
+  "admin": {
+    "title": "Order Management",
+    "backToSite": "Back to Site",
+    "searchPlaceholder": "Search orders...",
+    "totalOrders": "{{count}} orders",
+    "clearAll": "Clear All",
+    "noOrders": "No orders found",
+    "order": "Order",
+    "orderDetails": "Order Details",
+    "customerInfo": "Customer Info",
+    "items": "Items",
+    "copyDetails": "Copy Order Details",
+    "copied": "Copied!",
+    "confirmDelete": "Are you sure you want to delete this order?",
+    "confirmClearAll": "Are you sure you want to clear all orders?"
   }
 }

@@ -23,6 +23,7 @@ export default function Checkout() {
   const lang = i18n.language as 'en' | 'ar';
   const { items, totalPrice, clearCart } = useCartStore();
   const [submitted, setSubmitted] = useState(false);
+  const [orderNumber, setOrderNumber] = useState('');
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: '',
@@ -51,13 +52,18 @@ export default function Checkout() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-center"
+          className="text-center max-w-lg"
         >
           <div className="w-16 h-16 bg-emerald-light/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <Check size={32} className="text-emerald-light" />
           </div>
           <h1 className="font-serif text-3xl text-emerald-deep mb-4">{t('checkout.success')}</h1>
-          <p className="text-stone mb-8">{t('checkout.successDesc')}</p>
+          <p className="text-stone mb-6">{t('checkout.successDesc')}</p>
+          <div className="bg-cream-dark/30 rounded-xl p-5 mb-8">
+            <p className="text-xs text-stone mb-1">{t('checkout.orderNumber')}</p>
+            <p className="text-2xl font-serif text-gold tracking-wider">{orderNumber}</p>
+            <p className="text-xs text-stone mt-2">{t('checkout.orderNumberNote')}</p>
+          </div>
           <Link
             to="/products"
             className="inline-flex items-center gap-2 bg-gold text-emerald-deep px-6 py-3 rounded-lg hover:bg-gold-light transition-colors"
@@ -71,6 +77,35 @@ export default function Checkout() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const orderNum = `SH${Date.now().toString(36).toUpperCase()}${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
+    setOrderNumber(orderNum);
+    
+    const orderData = {
+      orderNumber: orderNum,
+      createdAt: new Date().toISOString(),
+      customer: {
+        name: form.name,
+        phone: form.phone,
+        address: form.address,
+        city: form.city,
+      },
+      paymentMethod: form.payment,
+      items: items.map(item => {
+        const product = products.find(p => p.id === item.productId);
+        return {
+          productId: item.productId,
+          name: product?.name.en || '',
+          price: product?.price || 0,
+          quantity: item.quantity,
+        };
+      }),
+      total: totalPrice(),
+    };
+    
+    const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+    localStorage.setItem('orders', JSON.stringify([orderData, ...existingOrders]));
+    
     setSubmitted(true);
     setTimeout(() => clearCart(), 50);
   };
