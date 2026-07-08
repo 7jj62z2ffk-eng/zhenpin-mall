@@ -4,7 +4,7 @@ export const products: Product[] = [
   {
     id: '1',
     name: { en: 'Cardamom & Cinnamon Digestive Tea', ar: 'شاي الهضم بالهيل والقرفة' },
-    category: { en: 'Middle Eastern Classics', ar: 'كلاسيكيات شرقية' },
+    category: { en: 'Middle Eastern Classics', ar: 'كلاسيكيات الشرق الأوسط' },
     price: 24,
     originalPrice: 32,
     images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=cardamom%20cinnamon%20tea%20golden%20cup%20spices%20warm%20luxury%20middle%20eastern%20aesthetic&image_size=square'],
@@ -45,7 +45,7 @@ export const products: Product[] = [
     images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=saffron%20rose%20tea%20golden%20luxury%20cup%20dried%20rose%20petals%20elegant%20middle%20eastern&image_size=square'],
     description: {
       en: 'Our most luxurious blend featuring premium Iranian saffron, Damascus rose petals, lemon verbena, and a touch of chamomile. Soothes the mind, brightens complexion, and provides powerful antioxidants. The perfect gift for someone special.',
-      ar: 'أفخر مزيج لدينا يضم زعفران إيراني فاخر، بتلات ورد دمشقي، ليمون فيربينا، ولمسة البابونج. يهدئ العقل، ي brighten البشرة، ويوفر مضادات أكسدة قوية. الهدية المثالية لشخص مميز.'
+      ar: 'أفخر مزيج لدينا يضم زعفران إيراني فاخر، بتلات ورد دمشقي، ليمون فيربينا، ولمسة البابونج. يهدئ العقل، يضيء البشرة، ويوفر مضادات أكسدة قوية. الهدية المثالية لشخص مميز.'
     },
     ingredients: {
       en: 'Iranian Saffron, Damascus Rose, Lemon Verbena, Chamomile',
@@ -74,7 +74,7 @@ export const products: Product[] = [
   {
     id: '3',
     name: { en: 'Hibiscus & Mint Cool Tea', ar: 'شاي الكركدى والنعناع المنعش' },
-    category: { en: 'Middle Eastern Classics', ar: 'كلاسيكيات شرقية' },
+    category: { en: 'Middle Eastern Classics', ar: 'كلاسيكيات الشرق الأوسط' },
     price: 22,
     images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=hibiscus%20mint%20tea%20ruby%20red%20cold%20glass%20fresh%20lemongrass%20middle%20eastern&image_size=square'],
     description: {
@@ -175,7 +175,7 @@ export const products: Product[] = [
   {
     id: '6',
     name: { en: 'Dandelion & Licorice Detox Tea', ar: 'شاي الهندباء وعرق السوس للتنقية' },
-    category: { en: 'Functional Blends', ar: 'مزيج وظيفي' },
+    category: { en: 'Functional Blends', ar: 'المزيجات الوظيفية' },
     price: 25,
     images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=dandelion%20root%20licorice%20detox%20tea%20amber%20golden%20cup%20herbal%20wellness%20elegant%20minimal&image_size=square'],
     description: {
@@ -208,7 +208,7 @@ export const products: Product[] = [
   {
     id: '7',
     name: { en: 'Lavender & Holy Basil Sleep Tea', ar: 'شاي الخزامى والريحان المقدس للنوم' },
-    category: { en: 'Functional Blends', ar: 'مزيج وظيفي' },
+    category: { en: 'Functional Blends', ar: 'المزيجات الوظيفية' },
     price: 27,
     images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=lavender%20holy%20basil%20tulsi%20sleep%20tea%20purple%20golden%20cup%20calming%20evening%20elegant&image_size=square'],
     description: {
@@ -242,7 +242,7 @@ export const products: Product[] = [
   {
     id: '8',
     name: { en: 'Plantain & Mint Men\'s Wellness Tea', ar: 'شاي اللسانة والنعناع لعافية الرجال' },
-    category: { en: 'Functional Blends', ar: 'مزيج وظيفي' },
+    category: { en: 'Functional Blends', ar: 'المزيجات الوظيفية' },
     price: 24,
     images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=plantain%20mint%20mens%20wellness%20tea%20dark%20green%20cup%20herbal%20strong%20masculine%20elegant&image_size=square'],
     description: {
@@ -275,7 +275,7 @@ export const products: Product[] = [
   {
     id: '9',
     name: { en: 'Turmeric & Lemongrass Immunity Tea', ar: 'شاي الكركم وعشب الليمون للمناعة' },
-    category: { en: 'Functional Blends', ar: 'مزيج وظيفي' },
+    category: { en: 'Functional Blends', ar: 'المزيجات الوظيفية' },
     price: 26,
     images: ['https://neeko-copilot.bytedance.net/api/text2image?prompt=turmeric%20lemongrass%20immunity%20tea%20golden%20yellow%20cup%20spices%20warm%20wellness%20elegant&image_size=square'],
     description: {

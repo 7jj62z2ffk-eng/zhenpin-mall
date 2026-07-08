@@ -24,7 +24,8 @@ export default function Navbar() {
   useEffect(() => {
     setMobileMenuOpen(false);
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
-  }, [location, isRTL]);
+    document.documentElement.lang = i18n.language;
+  }, [location, isRTL, i18n.language]);
 
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -57,20 +58,25 @@ export default function Navbar() {
           </button>
 
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.slice(0, 2).map((link) => (
+            {navLinks.slice(0, 2).map((link) => {
+              const isActive = location.pathname === link.to;
+              return (
               <Link
                 key={link.to}
                 to={link.to}
                 className={`relative text-sm font-medium tracking-wider transition-colors group ${
-                  scrolled ? 'text-emerald-deep hover:text-gold' : 'text-cream/90 hover:text-cream'
+                  isActive
+                    ? (scrolled ? 'text-gold' : 'text-gold-light')
+                    : (scrolled ? 'text-emerald-deep hover:text-gold' : 'text-cream/90 hover:text-cream')
                 }`}
               >
                 {link.label}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                  scrolled ? 'bg-gold' : 'bg-cream'
+                <span className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${
+                  isActive ? 'w-full bg-gold' : 'w-0 group-hover:w-full ' + (scrolled ? 'bg-gold' : 'bg-cream')
                 }`} />
               </Link>
-            ))}
+              );
+            })}
           </div>
 
           <Link to="/" className={`font-serif text-xl md:text-2xl tracking-wider ${
@@ -80,20 +86,25 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.slice(2).map((link) => (
+            {navLinks.slice(2).map((link) => {
+              const isActive = location.pathname === link.to;
+              return (
               <Link
                 key={link.to}
                 to={link.to}
                 className={`relative text-sm font-medium tracking-wider transition-colors group ${
-                  scrolled ? 'text-emerald-deep hover:text-gold' : 'text-cream/90 hover:text-cream'
+                  isActive
+                    ? (scrolled ? 'text-gold' : 'text-gold-light')
+                    : (scrolled ? 'text-emerald-deep hover:text-gold' : 'text-cream/90 hover:text-cream')
                 }`}
               >
                 {link.label}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                  scrolled ? 'bg-gold' : 'bg-cream'
+                <span className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${
+                  isActive ? 'w-full bg-gold' : 'w-0 group-hover:w-full ' + (scrolled ? 'bg-gold' : 'bg-cream')
                 }`} />
               </Link>
-            ))}
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-3">
@@ -113,7 +124,7 @@ export default function Navbar() {
                 <div className="absolute right-0 top-full mt-2 bg-cream rounded-xl shadow-lg py-2 min-w-[140px] z-50 border border-cream-dark">
                   <button
                     onClick={() => changeLanguage('en')}
-                    className={`w-full px-4 py-2 text-left text-sm font-medium transition-colors ${
+                    className={`w-full px-4 py-2 text-start text-sm font-medium transition-colors ${
                       i18n.language === 'en' ? 'text-gold bg-gold/10' : 'text-emerald-deep hover:bg-cream-dark'
                     }`}
                   >
@@ -121,7 +132,7 @@ export default function Navbar() {
                   </button>
                   <button
                     onClick={() => changeLanguage('ar')}
-                    className={`w-full px-4 py-2 text-left text-sm font-medium transition-colors ${
+                    className={`w-full px-4 py-2 text-start text-sm font-medium transition-colors ${
                       i18n.language === 'ar' ? 'text-gold bg-gold/10' : 'text-emerald-deep hover:bg-cream-dark'
                     }`}
                   >

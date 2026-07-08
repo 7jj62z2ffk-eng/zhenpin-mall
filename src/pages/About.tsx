@@ -13,18 +13,18 @@ export default function About() {
 
   return (
     <div className="pt-24 pb-16 px-6 min-h-screen bg-cream">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <ScrollReveal>
           <h1 className="font-serif text-4xl text-emerald-deep mb-4 text-center">{t('about.title')}</h1>
-          <p className="text-stone text-center mb-16">{t('about.subtitle')}</p>
+          <p className="text-stone text-center mb-16 max-w-2xl mx-auto">{t('about.subtitle')}</p>
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="mb-16">
+          <div className="mb-20">
             <img
               src="https://neeko-copilot.bytedance.net/api/text2image?prompt=middle%20eastern%20tea%20artisan%20craftsmanship%20saffron%20spices%20warm%20golden%20light%20luxury%20heritage&image_size=landscape_16_9"
               alt="About"
-              className="w-full h-72 object-cover rounded-xl mb-8"
+              className="w-full h-[420px] object-cover rounded-xl mb-8 shadow-md"
             />
             <h2 className="font-serif text-2xl text-emerald-deep mb-4">{t('about.philosophy')}</h2>
             <p className="text-stone leading-relaxed mb-4">

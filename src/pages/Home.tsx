@@ -11,7 +11,7 @@ export default function Home() {
   const lang = i18n.language as 'en' | 'ar';
   const featuredProducts = products.slice(0, 4);
   const newProducts = products.slice(4, 8);
-  const displayCategories = categories.slice(1, 5);
+  const displayCategories = categories.slice(1, 6);
 
   return (
     <div>
@@ -22,9 +22,9 @@ export default function Home() {
             alt="Hero"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-deep/85 via-emerald-deep/70 to-emerald-deep/80" />
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gold/8 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-emerald-light/10 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-deep/70 via-emerald-deep/50 to-emerald-deep/65" />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gold/15 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-emerald-light/15 rounded-full blur-3xl" />
         </div>
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <motion.div
@@ -167,7 +167,7 @@ export default function Home() {
                 <h2 className="font-serif text-2xl md:text-3xl text-emerald-deep mb-2">{t('home.featured')}</h2>
                 <p className="text-stone">{t('home.featuredDesc')}</p>
               </div>
-              <Link to="/products" className="inline-flex items-center gap-2 text-gold hover:text-emerald-deep transition-colors font-medium group">
+              <Link to="/products" className="inline-flex items-center gap-2 text-gold-dark hover:text-emerald-deep transition-colors font-medium group">
                 <span>{t('home.viewAll')}</span>
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -189,7 +189,7 @@ export default function Home() {
                 <h2 className="font-serif text-2xl md:text-3xl text-emerald-deep mb-2">{t('home.newArrivals')}</h2>
                 <p className="text-stone">{t('home.newArrivalsDesc')}</p>
               </div>
-              <Link to="/products" className="inline-flex items-center gap-2 text-gold hover:text-emerald-deep transition-colors font-medium group">
+              <Link to="/products" className="inline-flex items-center gap-2 text-gold-dark hover:text-emerald-deep transition-colors font-medium group">
                 <span>{t('home.viewAll')}</span>
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -230,7 +230,7 @@ export default function Home() {
               </p>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 text-gold hover:text-emerald-deep transition-colors font-medium group"
+                className="inline-flex items-center gap-2 text-gold-dark hover:text-emerald-deep transition-colors font-medium group"
               >
                 <span>{t('home.learnMore')}</span>
                 <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
@@ -262,9 +262,7 @@ export default function Home() {
                   <Quote size={16} className="text-gold/30 mb-2" />
                   <p className="text-emerald-deep text-sm leading-relaxed mb-5">{review.comment[lang]}</p>
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gold/10 rounded-full flex items-center justify-center">
-                      <span className="font-serif text-gold text-xs">{review.name[lang][0]}</span>
-                    </div>
+                    <img src={review.avatar} alt={review.name[lang]} className="w-8 h-8 rounded-full object-cover" />
                     <div>
                       <p className="text-emerald-deep text-xs font-medium">{review.name[lang]}</p>
                       <p className="text-stone text-xs">{review.date}</p>
@@ -277,14 +275,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-emerald-deep">
+      <section className="py-20 px-6 bg-gold/15 border-y border-gold/20">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <h2 className="font-serif text-2xl md:text-3xl text-cream mb-5">{t('home.heroTitle')}</h2>
-            <p className="text-cream/70 text-base mb-8 max-w-xl mx-auto">{t('home.heroDesc')}</p>
+            <h2 className="font-serif text-2xl md:text-3xl text-emerald-deep mb-5">{t('home.heroTitle')}</h2>
+            <p className="text-stone text-base mb-8 max-w-xl mx-auto">{t('home.heroDesc')}</p>
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 bg-gold text-emerald-deep px-8 py-3.5 rounded-lg hover:bg-gold-light transition-all duration-300 font-medium"
+              className="inline-flex items-center gap-2 bg-emerald-deep text-cream px-8 py-3.5 rounded-lg hover:bg-emerald-dark transition-all duration-300 font-medium"
             >
               <span>{t('home.explore')}</span>
               <ArrowRight size={18} />

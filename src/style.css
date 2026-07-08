@@ -15,8 +15,8 @@
   --color-ink-light: #3a3a3a;
   --color-stone: #7a7268;
   --color-stone-light: #9a948a;
-  --font-serif: 'Playfair Display', 'Noto Serif', Georgia, serif;
-  --font-sans: 'Inter', 'Noto Sans', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', 'Noto Sans Arabic', Georgia, serif;
+  --font-sans: 'Inter', 'Noto Sans Arabic', system-ui, sans-serif;
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
@@ -94,7 +94,7 @@ h1, h2, h3, h4, h5, h6 {
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(201, 169, 97, 0.25);
+  box-shadow: 0 0 0 2px rgba(201, 169, 97, 0.4);
 }
 
 button {

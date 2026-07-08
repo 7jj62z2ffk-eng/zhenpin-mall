@@ -97,7 +97,7 @@ export default function ProductDetail() {
               </div>
 
               <div className="flex items-center gap-3 mb-8">
-                <span className="text-3xl text-gold font-medium">AED {product.price}</span>
+                <span className="text-3xl text-gold-dark font-medium">AED {product.price}</span>
                 {product.originalPrice && (
                   <span className="text-stone-light line-through text-lg">AED {product.originalPrice}</span>
                 )}
