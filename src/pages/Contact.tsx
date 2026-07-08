@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ScrollReveal from '../components/ScrollReveal';
@@ -6,10 +6,22 @@ import ScrollReveal from '../components/ScrollReveal';
 export default function Contact() {
   const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    const form = formRef.current;
+    if (!form) return;
+    const name = (form.elements.namedItem('name') as HTMLInputElement)?.value || '';
+    const email = (form.elements.namedItem('email') as HTMLInputElement)?.value || '';
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement)?.value || '';
+    
+    const subject = `Contact from ${name} | Saffron Heritage`;
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    
+    window.location.href = `mailto:381562675@qq.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    setTimeout(() => setSubmitted(true), 500);
   };
 
   return (
@@ -68,11 +80,12 @@ export default function Contact() {
                 <p className="text-stone">{t('contact.sentDesc')}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-cream-dark/30 rounded-xl p-8 space-y-4">
+              <form ref={formRef} onSubmit={handleSubmit} className="bg-cream-dark/30 rounded-xl p-8 space-y-4">
                 <div>
                   <label className="block text-sm text-stone mb-2">{t('contact.yourName')}</label>
                   <input
                     type="text"
+                    name="name"
                     required
                     className="w-full px-4 py-3 border border-cream-dark rounded-lg bg-cream text-emerald-deep focus:outline-none focus:border-gold"
                   />
@@ -81,6 +94,7 @@ export default function Contact() {
                   <label className="block text-sm text-stone mb-2">{t('contact.yourEmail')}</label>
                   <input
                     type="email"
+                    name="email"
                     required
                     className="w-full px-4 py-3 border border-cream-dark rounded-lg bg-cream text-emerald-deep focus:outline-none focus:border-gold"
                   />
@@ -88,6 +102,7 @@ export default function Contact() {
                 <div>
                   <label className="block text-sm text-stone mb-2">{t('contact.message')}</label>
                   <textarea
+                    name="message"
                     required
                     rows={5}
                     className="w-full px-4 py-3 border border-cream-dark rounded-lg bg-cream text-emerald-deep focus:outline-none focus:border-gold resize-none"
