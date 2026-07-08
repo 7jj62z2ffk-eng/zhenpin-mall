@@ -60,7 +60,7 @@ export default function Footer() {
                   <Phone size={16} className="text-gold" />
                 </div>
                 <div>
-                  <p className="text-cream font-medium">+971 4 123 4567</p>
+                  <p className="text-cream font-medium">+86 135 9017 3320</p>
                   <p className="text-sand text-xs">{t('contact.hotlineHours')}</p>
                 </div>
               </li>
@@ -69,7 +69,7 @@ export default function Footer() {
                   <Mail size={16} className="text-gold" />
                 </div>
                 <div>
-                  <p className="text-cream font-medium">hello@saffronheritage.com</p>
+                  <p className="text-cream font-medium">381562675@qq.com</p>
                   <p className="text-sand text-xs">{t('contact.emailReply')}</p>
                 </div>
               </li>

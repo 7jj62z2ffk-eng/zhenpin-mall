@@ -29,7 +29,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-serif text-lg text-emerald-deep mb-1">{t('contact.hotline')}</h3>
-                  <p className="text-stone">+971 4 123 4567</p>
+                  <p className="text-stone">+86 135 9017 3320</p>
                   <p className="text-stone text-sm">{t('contact.hotlineHours')}</p>
                 </div>
               </div>
@@ -40,7 +40,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-serif text-lg text-emerald-deep mb-1">{t('contact.email')}</h3>
-                  <p className="text-stone">hello@saffronheritage.com</p>
+                  <p className="text-stone">381562675@qq.com</p>
                   <p className="text-stone text-sm">{t('contact.emailReply')}</p>
                 </div>
               </div>
