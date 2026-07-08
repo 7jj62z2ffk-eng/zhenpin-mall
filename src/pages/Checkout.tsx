@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Check, CreditCard, Building2, Copy, CheckCheck } from 'lucide-react';
+import { ArrowLeft, Check, CreditCard, Building2, Copy, CheckCheck, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useCartStore } from '../stores/cartStore';
 import { products } from '../data/products';
 import ScrollReveal from '../components/ScrollReveal';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 const BANK_DETAILS = {
   accountNo: '63007982843',
@@ -25,6 +26,7 @@ export default function Checkout() {
   const [submitted, setSubmitted] = useState(false);
   const [orderNumber, setOrderNumber] = useState('');
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -75,37 +77,53 @@ export default function Checkout() {
     );
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     const orderNum = `SH${Date.now().toString(36).toUpperCase()}${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
     setOrderNumber(orderNum);
     
+    const orderItems = items.map(item => {
+      const product = products.find(p => p.id === item.productId);
+      return {
+        productId: item.productId,
+        name: product?.name.en || '',
+        price: product?.price || 0,
+        quantity: item.quantity,
+      };
+    });
+    
     const orderData = {
-      orderNumber: orderNum,
-      createdAt: new Date().toISOString(),
-      customer: {
-        name: form.name,
-        phone: form.phone,
-        address: form.address,
-        city: form.city,
-      },
-      paymentMethod: form.payment,
-      items: items.map(item => {
-        const product = products.find(p => p.id === item.productId);
-        return {
-          productId: item.productId,
-          name: product?.name.en || '',
-          price: product?.price || 0,
-          quantity: item.quantity,
-        };
-      }),
+      order_number: orderNum,
+      customer_name: form.name,
+      customer_phone: form.phone,
+      customer_address: form.address,
+      customer_city: form.city,
+      payment_method: form.payment,
+      items: orderItems,
       total: totalPrice(),
+      status: 'pending',
     };
     
+    // 本地存储一份
     const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
-    localStorage.setItem('orders', JSON.stringify([orderData, ...existingOrders]));
+    localStorage.setItem('orders', JSON.stringify([{ ...orderData, createdAt: new Date().toISOString() }, ...existingOrders]));
     
+    setSubmitting(true);
+    
+    // 如果配置了 Supabase，写入云端数据库
+    if (isSupabaseConfigured()) {
+      try {
+        const { error } = await supabase.from('orders').insert([orderData]);
+        if (error) {
+          console.error('Supabase insert error:', error);
+        }
+      } catch (err) {
+        console.error('Supabase error:', err);
+      }
+    }
+    
+    setSubmitting(false);
     setSubmitted(true);
     setTimeout(() => clearCart(), 50);
   };
@@ -290,9 +308,11 @@ export default function Checkout() {
 
               <button
                 type="submit"
-                className="w-full bg-emerald-deep text-cream py-4 rounded-lg hover:bg-gold hover:text-emerald-deep transition-colors font-medium"
+                disabled={submitting}
+                className="w-full bg-emerald-deep text-cream py-4 rounded-lg hover:bg-gold hover:text-emerald-deep transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {t('checkout.confirmPay')} AED {totalPrice()}
+                {submitting && <Loader2 size={18} className="animate-spin" />}
+                {submitting ? t('checkout.submitting') : `${t('checkout.confirmPay')} AED ${totalPrice()}`}
               </button>
             </form>
           </div>

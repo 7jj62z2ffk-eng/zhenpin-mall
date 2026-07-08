@@ -101,6 +101,7 @@ export default {
     "paymentMemo": "Payment Reference",
     "memoText": "Buyer Name + PI No. + Halal Herbal Tea Bags",
     "confirmPay": "Place Order",
+    "submitting": "Submitting Order...",
     "orderDetails": "Order Summary",
     "subtotal": "Subtotal",
     "shipping": "Shipping",
@@ -202,6 +203,15 @@ export default {
     "copyDetails": "Copy Order Details",
     "copied": "Copied!",
     "confirmDelete": "Are you sure you want to delete this order?",
-    "confirmClearAll": "Are you sure you want to clear all orders?"
+    "confirmClearAll": "Are you sure you want to clear all orders?",
+    "login": "Sign In",
+    "logout": "Sign Out",
+    "password": "Admin Password",
+    "wrongPassword": "Incorrect password",
+    "loginDesc": "Enter your admin password to continue",
+    "refresh": "Refresh",
+    "loading": "Loading orders...",
+    "cloudData": "Cloud Data",
+    "localData": "Local Data"
   }
 }

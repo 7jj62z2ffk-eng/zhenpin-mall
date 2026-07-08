@@ -101,6 +101,7 @@ export default {
     "paymentMemo": "مرجع الدفع",
     "memoText": "اسم المشتري + رقم PI + أكياس شاي أعشاب حلال",
     "confirmPay": "تأكيد الطلب",
+    "submitting": "جاري إرسال الطلب...",
     "orderDetails": "ملخص الطلب",
     "subtotal": "المجموع الفرعي",
     "shipping": "الشحن",
@@ -202,6 +203,15 @@ export default {
     "copyDetails": "نسخ تفاصيل الطلب",
     "copied": "تم النسخ!",
     "confirmDelete": "هل أنت متأكد من حذف هذا الطلب؟",
-    "confirmClearAll": "هل أنت متأكد من مسح جميع الطلبات؟"
+    "confirmClearAll": "هل أنت متأكد من مسح جميع الطلبات؟",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "password": "كلمة مرور المسؤول",
+    "wrongPassword": "كلمة المرور غير صحيحة",
+    "loginDesc": "أدخل كلمة مرور المسؤول للمتابعة",
+    "refresh": "تحديث",
+    "loading": "جاري تحميل الطلبات...",
+    "cloudData": "بيانات سحابية",
+    "localData": "بيانات محلية"
   }
 }

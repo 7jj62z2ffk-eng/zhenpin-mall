@@ -101,6 +101,7 @@ export default {
     "paymentMemo": "付款备注",
     "memoText": "买家姓名 + PI编号 + 清真养生茶包",
     "confirmPay": "提交订单",
+    "submitting": "提交中...",
     "orderDetails": "订单摘要",
     "subtotal": "小计",
     "shipping": "运费",
@@ -202,6 +203,15 @@ export default {
     "copyDetails": "复制订单详情",
     "copied": "已复制!",
     "confirmDelete": "确定要删除这个订单吗？",
-    "confirmClearAll": "确定要清空所有订单吗？"
+    "confirmClearAll": "确定要清空所有订单吗？",
+    "login": "登录",
+    "logout": "退出登录",
+    "password": "管理员密码",
+    "wrongPassword": "密码错误",
+    "loginDesc": "请输入管理员密码以继续",
+    "refresh": "刷新",
+    "loading": "加载中...",
+    "cloudData": "云端数据",
+    "localData": "本地数据"
   }
 }
