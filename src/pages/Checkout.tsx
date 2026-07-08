@@ -60,7 +60,7 @@ export default function Checkout() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    clearCart();
+    setTimeout(() => clearCart(), 50);
   };
 
   const paymentMethods = [
