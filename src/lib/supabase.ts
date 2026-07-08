@@ -33,5 +33,5 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export const isSupabaseConfigured = () => {
-  return SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY';
+  return SUPABASE_URL !== '' && SUPABASE_ANON_KEY !== '' && !SUPABASE_URL.includes('YOUR_');
 };
