@@ -15,7 +15,7 @@
     "@vitejs/plugin-react": "^6.0.3",
     "autoprefixer": "^10.5.2",
     "gh-pages": "^6.3.0",
-    "postcss": "^8.5.16",
+    "postcss": "^8.5.26",
     "tailwindcss": "^4.3.2",
     "typescript": "~6.0.2",
     "vite": "^8.1.1"
@@ -27,7 +27,7 @@
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-i18next": "^15.4.0",
-    "react-router-dom": "^7.18.1",
+    "react-router-dom": "^7.18.2",
     "zustand": "^5.0.14"
   }
 }
