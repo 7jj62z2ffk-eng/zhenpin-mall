@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://7jj62z2ffk-eng.github.io/zhenpin-mall/sitemap.xml
